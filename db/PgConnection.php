@@ -4,11 +4,14 @@ require_once 'DbConnection.php';
 
     class PgConnection extends DbConnection
     {
+        
         private $connection;
-        function __construct($server, $port, $user, $password, $database)
+        
+         function __construct($server, $port, $user, $password, $database)
         {
             parent::__construct($server, $port, $user, $password, $database);
         }
+
 
         public function connect() {
           $this->connection = pg_connect("host=$this->server port=$this->port user=$this->user password=$this->password dbname=$this->database");
