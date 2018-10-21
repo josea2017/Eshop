@@ -1,0 +1,36 @@
+create table usuarios
+(
+	id serial,	
+	nombre varchar not null,
+	apellidos varchar not null,
+	telefono varchar not null,
+	correo varchar not null,
+	direccion varchar not null,
+	rol varchar not null,
+	id_usuario varchar not null primary key,
+	contrasenna varchar not null
+);
+
+create table categorias
+(
+	id serial,	
+	id_categoria varchar not null primary key,
+	nombre varchar not null
+);
+
+create table productos
+(
+	id serial,	
+	id_producto varchar not null primary key,
+	nombre varchar not null,
+	descripcion varchar not null,
+	imagen bytea not null,
+	stock int not null,
+	precio double precision,
+	id_categoria varchar not null references categorias(id_categoria)
+);
+
+
+
+
+
