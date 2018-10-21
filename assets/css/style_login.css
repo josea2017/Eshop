@@ -1,0 +1,77 @@
+#titulo_login_eshop{
+	position: absolute;
+	left: 50%;
+}
+#link_login_regresar{
+	color: #1a8cff;
+	font-size: 20px;
+}
+.caja_login{
+	display: flex;
+	width: 40vw;
+	height: 40vh;
+	flex-wrap: wrap;
+	position: absolute;
+	top: 15%;
+	left: 30%;
+}
+.imagen_login_avatar{
+	min-width: 50%;
+	min-height: 50%;
+	margin-left: 30%;
+}
+.datos_login{
+	display: flex;
+	width: 40vw;
+	height: 40vh;
+	flex-wrap: wrap;
+	position: absolute;
+	top: 55%;
+	left: 30%;
+}
+.label_usuario{
+	display: flex;
+	flex-wrap: wrap;
+	position: absolute;
+	margin-top: 7%;
+	margin-left: 17%;
+	font-size: 20px;
+}
+.input_usuario{
+	display: flex;
+	flex-wrap: wrap;
+	position: absolute;
+	margin-top: 7%;
+	margin-left: 40%;
+	background-color: #d5d5c3;
+	border-style: groove;
+}
+.label_contrasenna{
+	display: flex;
+	flex-wrap: wrap;
+	position: absolute;
+	margin-top: 20%;
+	margin-left: 17%;
+	font-size: 20px;
+}
+.input_contrasenna{
+	display: flex;
+	flex-wrap: wrap;
+	position: absolute;
+	margin-top: 20%;
+	margin-left: 40%;
+	background-color: #d5d5c3;
+	border-style: groove;
+}
+#btn_login{
+	position: absolute;
+	min-width: 60%;
+	min-height: 15%;
+	top: 70%;
+	left: 25%;
+	background-color: black;
+	font-size: 20px;
+	color: white;
+	border-style: groove;
+
+}

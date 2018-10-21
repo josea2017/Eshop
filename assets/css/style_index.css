@@ -1,0 +1,36 @@
+.caja_fondo_index
+{
+	display: flex;
+	width: 50vw;
+	height: 50vh;
+	flex-wrap: wrap;
+	position:absolute;
+	top: 25%;
+	left: 25%;
+}
+
+.imagen_fondo_index{
+	min-width: 75%;
+	min-height: 100%;
+}
+
+#titulo_index_eshop{
+	position: absolute;
+	left: 50%;
+}
+
+#link_index_ingresar{
+	color: #1a8cff;
+	font-size: 20px;
+}
+
+#titulo_login_eshop{
+	position: absolute;
+	left: 50%;
+}
+
+#link_login_regresar{
+	color: #1a8cff;
+	font-size: 20px;
+}
+
