@@ -14,8 +14,8 @@ if($usuario && $contrasenna){
   foreach ($resultado as $fila) {
     if($fila['id_usuario'] == $usuario && $fila['contrasenna'] == $contrasenna)
     {
-      $_SESSION['login'] = $fila;
-      //echo $_SESSION['login']['id_usuario'];
+      $_SESSION['usuario'] = $fila;
+      //echo $_SESSION['usuario']['id_usuario'];
       header("Location: ../home/index.php");
     }else{
       echo "<script type='text/javascript' href'./login.php'>alert('Usuario y/o contraseña invalidos');</script>";
