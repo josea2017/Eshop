@@ -2,12 +2,28 @@
 $title='Eshop-Login';
 require_once '../db/PgConnection.php';
 require_once '../shared/header.php';
+require_once '../shared/sessions.php';
 
-$con = new PgConnection('localhost', '5432', 'jose', '12345', 'eshop');
-$con->connect();
+$usuario = $_POST['usuario'] ?? null;
+$contrasenna = $_POST['contrasenna'] ?? null;
 
-$result = $con->runQuery('SELECT * FROM usuarios');
-var_dump($result);
+if($usuario && $contrasenna){
+  $con = new PgConnection('localhost', '5432', 'jose', '12345', 'eshop');
+  $con->connect();
+  $resultado = $con->runQuery('SELECT * FROM usuarios');
+  foreach ($resultado as $fila) {
+    if($fila['id_usuario'] == $usuario && $fila['contrasenna'] == $contrasenna)
+    {
+      $_SESSION['login'] = $fila;
+      //echo $_SESSION['login']['id_usuario'];
+      header("Location: ../home/index.php");
+    }else{
+      echo "<script type='text/javascript' href'./login.php'>alert('Usuario y/o contraseña invalidos');</script>";
+    }
+
+  }
+}
+
  ?>
 <link rel="stylesheet" type="text/css" href="../assets/css/style_login.css">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,17 +52,21 @@ var_dump($result);
   </div>
 </nav>
 
-<div class="caja_login">
-  <img class="imagen_login_avatar" src="../assets/imagenes/login_avatar.png">
-</div>
-<div class="datos_login">
-  <label class="label_usuario">Usuario: </label>
-  <input class="input_usuario" type="text" name="usuario">
-  <label class="label_contrasenna">Contraseña: </label>
-  <input class="input_contrasenna" type="password" name="contrasenna">
-  <a id="btn_login" class="btn btn-primary" type="submit">Login</a>  
-</div>
+<form action="./login.php" method="POST">
+  <div class="caja_login">
+    <img class="imagen_login_avatar" src="../assets/imagenes/login_avatar.png">
+  </div>
+  <div class="datos_login">
+    <label class="label_usuario">Usuario: </label>
+    <input class="input_usuario" type="text" name="usuario" placeholder="usuario" autofocus>
+    <label class="label_contrasenna">Contraseña: </label>
+    <input class="input_contrasenna" type="password" name="contrasenna" placeholder="contraseña">
+    <button id="btn_login" class="btn btn-primary" type="submit">Login</button>
+  </div>
+</form>
 
 
 
- <?php require_once '../shared/footer.php'; ?>
+ <?php 
+ require_once '../shared/footer.php';
+  ?>
