@@ -1,6 +1,13 @@
 <?php 
 $title='Eshop-Login';
+require_once '../db/PgConnection.php';
 require_once '../shared/header.php';
+
+$con = new PgConnection('localhost', '5432', 'jose', '12345', 'eshop');
+$con->connect();
+
+$result = $con->runQuery('SELECT * FROM usuarios');
+var_dump($result);
  ?>
 <link rel="stylesheet" type="text/css" href="../assets/css/style_login.css">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
