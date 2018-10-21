@@ -11,6 +11,9 @@ create table usuarios
 	contrasenna varchar not null
 );
 
+INSERT INTO public.usuarios(id, nombre, apellidos, telefono, correo, direccion, rol, id_usuario, contrasenna) 
+VALUES (1, 'Jose', 'Alfaro Aguilar', '87551747', 'josea3712@gmail.com', 'Pital', 'administrador', 'josea3712', '12345');
+
 create table categorias
 (
 	id serial,	
