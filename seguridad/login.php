@@ -59,7 +59,8 @@ if($usuario && $contrasenna){
   </div>
   <div class="datos_login">
     <label class="label_usuario">Usuario: </label>
-    <input class="input_usuario" type="text" name="usuario" placeholder="Usuario" autofocus>
+
+    <input class="input_usuario" type="text" name="usuario" placeholder="Usuario" autofocus  value="<?= isset($_POST['usuario']) ? $_POST['usuario'] : ''; ?>">
     <label class="label_contrasenna">Contraseña: </label>
     <input class="input_contrasenna" type="password" name="contrasenna" placeholder="Contraseña">
     <button id="btn_login" class="btn btn-primary" type="submit">Login</button>
