@@ -10,7 +10,7 @@ if($usuario && $contrasenna){
   $con = new PgConnection('localhost', '5432', 'jose', '12345', 'eshop');
   $con->connect();
   $resultado = $con->runQuery('SELECT * FROM usuarios');
-  var_dump($resultado);
+  //var_dump($resultado);
   foreach ($resultado as $fila) {
     if($fila['id_usuario'] == $usuario && $fila['contrasenna'] == $contrasenna)
     {
