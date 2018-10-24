@@ -3,7 +3,6 @@ $title='Eshop-Login';
 require_once '../db/PgConnection.php';
 require_once '../shared/header.php';
 require_once '../shared/sessions.php';
-
 $usuario = $_POST['usuario'] ?? null;
 $contrasenna = $_POST['contrasenna'] ?? null;
 
@@ -11,6 +10,7 @@ if($usuario && $contrasenna){
   $con = new PgConnection('localhost', '5432', 'jose', '12345', 'eshop');
   $con->connect();
   $resultado = $con->runQuery('SELECT * FROM usuarios');
+  var_dump($resultado);
   foreach ($resultado as $fila) {
     if($fila['id_usuario'] == $usuario && $fila['contrasenna'] == $contrasenna)
     {
@@ -36,7 +36,8 @@ if($usuario && $contrasenna){
     <ul class="navbar-nav mr-auto">
         <?php
 	        $menu = [
-	          'Principal' => '../'
+            'Registrarse' => './registro.php',
+	          'Principal' => '../',
 	        ];
         ?>
     </ul>
@@ -44,7 +45,7 @@ if($usuario && $contrasenna){
         <?php 
             foreach ($menu as $key => $value) {
             	echo "<li class='nav-item'>
-                      	<a id='link_login_regresar' class='nav-link' href='$value'>$key</a>
+                      	<a id='link_login_registro' class='nav-link' href='$value'>$key</a>
                       </li>";
             }
         ?>
@@ -58,9 +59,9 @@ if($usuario && $contrasenna){
   </div>
   <div class="datos_login">
     <label class="label_usuario">Usuario: </label>
-    <input class="input_usuario" type="text" name="usuario" placeholder="usuario" autofocus>
+    <input class="input_usuario" type="text" name="usuario" placeholder="Usuario" autofocus>
     <label class="label_contrasenna">Contraseña: </label>
-    <input class="input_contrasenna" type="password" name="contrasenna" placeholder="contraseña">
+    <input class="input_contrasenna" type="password" name="contrasenna" placeholder="Contraseña">
     <button id="btn_login" class="btn btn-primary" type="submit">Login</button>
   </div>
 </form>
