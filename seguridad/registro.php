@@ -17,15 +17,20 @@ $usuario_modelos = new Usuario();
 /*if($usuario_modelos->validarRegistro($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna, $confirm_contrasenna)){
   echo "Datos completos";
 }*/
-if($usuario_modelos->validarRegistroUsuarioDisponible($usuario)){
-  echo 'Usuario disponible';
+if($contrasenna != '' && $confirm_contrasenna != '')
+{
+  if($contrasenna == $confirm_contrasenna)
+  {
+    if($usuario_modelos->validarRegistro($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna)){
+      echo "<script type='text/javascript' href'./registro.php'>alert('Registro exitoso');</script>";
+    }else{
+      echo "<script type='text/javascript' href'./registro.php'>alert('Datos incompletos y/o usuario ya existe');</script>";
+    }
+  }else{
+    echo "<script type='text/javascript' href'./registro.php'>alert('Las contraseñas deben ser iguales');</script>";
+  }
 }
-
- ?>
-
-
-
-
+  ?>
 
 
 <link rel="stylesheet" type="text/css" href="../assets/css/style_registro.css">
