@@ -5,15 +5,16 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 80%;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 60%;">
     <ul id="menu_opciones" class="navbar-nav mr-auto">
         <?php
         $menu = [
           'Home' => '../home/index.php',
+          'Adm Categorias' => '../categoria/index.php',
           //'Salir' => '../seguridad/login.php',
         ];
 
-            echo "<label id='nombre_usuario' style='margin-top: 5%;''>".$_SESSION['usuario']['nombre']."|</label>";
+            echo "<label id='nombre_usuario' style='margin-top: 3%;''>".$_SESSION['usuario']['nombre']."|</label>";
         foreach ($menu as $key => $value) {
             echo "<li class='nav-item'>
                     <a class='nav-link' href='$value'>$key</a>
