@@ -1,0 +1,25 @@
+table .table_head{
+    background-color: #323434;
+    color: #fff;
+}
+
+
+.div_tabla_crear_categoria{
+	display: flex;
+	flex-wrap: wrap;
+	width: 50vw;
+	height: 50vw;
+	margin-top: 5%;
+	margin-left: 35%;
+}
+
+.div_tabla_crear_categoria .tabla_crear_categoria td input{
+	display: inline-block;
+    float: right;
+}
+
+.div_tabla_crear_categoria .tabla_crear_categoria td button{
+	margin-left: 45%;
+	width: 55%;
+}
+
