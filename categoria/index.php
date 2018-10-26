@@ -7,13 +7,16 @@ require_once '../shared/menu.php';
 require_once '../seguridad/verificar_session.php';
 require_once '../modelos/Categoria.php';
  ?>
+ <link rel="stylesheet" type="text/css" href="../assets/css/style_index_categoria.css">
 
-<table class="table table-hover" style="text-align: center; margin-top: 3%;" border="1">
+<table class="table table-hover table-sm" style="text-align: center; margin-top: 0%;" border="1">
+  <thead class="table_head">
       <tr>
         <th>ID CATEGORIA</th>
         <th>NOMBRE</th>
-        <th><input type="submit" style="font-size: 15px;" class="btn btn-success"  value="Categoria nueva" name="categoria_nueva"></th>
+        <th><a class="btn btn-success" name="categoria_nueva" href="./nuevo.php">Categoria nueva</a></th>
       </tr>
+  </thead>
       <?php 
           $categoria_modelos = new Categoria();
 	      	$lista_categorias = $categoria_modelos->listarTodasCategorias();
@@ -37,5 +40,6 @@ require_once '../modelos/Categoria.php';
 
 
  <?php
+ //677172
  require_once '../shared/footer.php';
   ?>
