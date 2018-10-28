@@ -1,17 +1,17 @@
 <?php
-require_once '../db/PgConnection.php';
 
+namespace Modelos{
 class Categoria
   {
-
-    function __construct(){}
+    private $connection;
+    function __construct($connection){
+      $this->connection = $connection;
+    }
 
     public function listarTodasCategorias(){
 
-        $con = new PgConnection('localhost', '5432', 'jose', '12345', 'eshop');
-        $con->connect();
         $sql = "SELECT * FROM categorias ORDER BY id ASC";
-        $resultado = $con->runQuery($sql);
+        $resultado = $this->connection->runQuery($sql);
         return $resultado; 
     }
     public function validarRegistro($id_categoria, $nombre)
@@ -27,11 +27,8 @@ class Categoria
       $resultado = false;
       $contador = 0;
 
-      $con = new PgConnection('localhost', '5432', 'jose', '12345', 'eshop');
-      $con->connect();
-
       $resultado_db = null;
-      $resultado_db = $con->runQuery("SELECT * FROM categorias WHERE id_categoria = '$id_categoria'");
+      $resultado_db = $this->connection->runQuery("SELECT * FROM categorias WHERE id_categoria = '$id_categoria'");
 
       if(empty($resultado_db)){
         $resultado = true;
@@ -43,14 +40,13 @@ class Categoria
     {
         
       $sql = "INSERT INTO categorias(id_categoria, nombre) VALUES ('$id_categoria','$nombre')";
-      $con = new PgConnection('localhost', '5432', 'jose', '12345', 'eshop');
-      $con->connect();
-      $con->runStatement($sql);
+      $this->connection->runStatement($sql);
         
     }
     
 
   }
+}
  
 /*
 public function listarTodosDepartamentos()

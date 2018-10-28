@@ -1,8 +1,8 @@
 <?php 
 $title='Eshop-Registro';
-require_once '../db/PgConnection.php';
 require_once '../shared/header.php';
 require_once '../modelos/Usuario.php';
+require_once '../shared/db.php';
 
 $nombre = $_POST['nombre'] ?? '';
 $apellidos = $_POST['apellidos'] ?? '';
@@ -13,7 +13,6 @@ $rol = $_POST['rol'] ?? '';
 $usuario = $_POST['usuario'] ?? '';
 $contrasenna = $_POST['contrasenna'] ?? '';
 $confirm_contrasenna = $_POST['confirm_contrasenna'] ?? '';
-$usuario_modelos = new Usuario();
 /*if($usuario_modelos->validarRegistro($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna, $confirm_contrasenna)){
   echo "Datos completos";
 }*/
@@ -21,7 +20,7 @@ if($contrasenna != '' && $confirm_contrasenna != '')
 {
   if($contrasenna == $confirm_contrasenna)
   {
-    if($usuario_modelos->validarRegistro($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna)){
+    if($usuario_modelo->validarRegistro($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna)){
       echo "<script type='text/javascript' href'./registro.php'>alert('Registro exitoso');</script>";
     }else{
       echo "<script type='text/javascript' href'./registro.php'>alert('Datos incompletos y/o usuario ya existe');</script>";
