@@ -5,7 +5,7 @@ require_once '../shared/header.php';
 require_once '../shared/sessions.php';
 require_once '../shared/menu.php';
 require_once '../seguridad/verificar_session.php';
-require_once '../modelos/Categoria.php';
+require_once '../shared/db.php';
  ?>
  <link rel="stylesheet" type="text/css" href="../assets/css/style_index_categoria.css">
 
@@ -18,8 +18,7 @@ require_once '../modelos/Categoria.php';
       </tr>
   </thead>
       <?php 
-          $categoria_modelos = new Categoria();
-	      	$lista_categorias = $categoria_modelos->listarTodasCategorias();
+	      	$lista_categorias = $categoria_modelo->listarTodasCategorias();
           if(!empty($lista_categorias))
           {
   	        foreach ($lista_categorias as $categoria) {
