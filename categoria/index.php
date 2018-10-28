@@ -32,7 +32,7 @@ require_once '../shared/db.php';
                      /*" <a type='submit' name='editar' href='./editar.php?saludo=" . $categoria['id_categoria'] . "'>Editar</a>" .*/
                      " <a style='font-size: 15px;' class='btn btn-primary' role='button' href='./editar.php?id_categoria=" . $categoria['id_categoria'] . "&nombre= " . $categoria['nombre'] ."'>Editar</a>".
                      /*"<input class='btn btn-primary' type='submit' name='editar' value='" . $categoria['id_categoria'] . "'>" .*/
-                     " <a style='font-size: 15px;' class='btn btn-danger' role='button' href='?id=" . $categoria['id_categoria'] . "'>Borrar</a>".
+                     " <a style='font-size: 15px;' class='btn btn-danger' role='button' href='./eliminar.php?id_categoria=" . $categoria['id_categoria'] . "&nombre= " . $categoria['nombre'] ."'>Eliminar</a>".
                     "</td>";
     	            echo "</tr>";
     	        }

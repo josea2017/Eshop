@@ -1,6 +1,6 @@
 <?php 
-$title='Eshop-Editar Categoria';
-$tituloPagina = 'Editar categoría';
+$title='Eshop-Eliminar Categoria';
+$tituloPagina = 'Eliminar categoría';
 require_once '../shared/header.php';
 require_once '../shared/sessions.php';
 require_once '../shared/menu.php';
@@ -12,8 +12,13 @@ $nombre = $_GET["nombre"] ?? '';
 $nombre_nuevo = $_POST['nombre_nuevo'] ?? '';
 
 if($id_categoria != '' && $nombre_nuevo != ''){
-  $categoria_modelo->editar($id_categoria, $nombre_nuevo);
-  return header("Location: ./index.php");
+  if($categoria_modelo->eliminar($id_categoria)){
+    return header("Location: ./index.php");
+  }else{
+    echo "<script type='text/javascript' href'./eliminar.php'>alert('No se logró, categoria pertenece a productos');</script>";
+  }
+  //$categoria_modelo->editar($id_categoria, $nombre_nuevo);
+  
   //header("Location: ./login.php");
 }
  ?>
@@ -31,7 +36,7 @@ if($id_categoria != '' && $nombre_nuevo != ''){
       <td>NOMBRE: <input type="text" name="nombre_nuevo" autofocus value="<?= $nombre ?>"></td>
     </tr>
     <tr>
-      <td><button class="btn btn-primary" type="submit">Guardar</button></td>
+      <td><label>¿Esta seguro?</label><button class="btn btn-danger" type="submit">Eliminar</button></td>
     </tr>
   </table>
 </div>

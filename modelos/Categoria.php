@@ -49,6 +49,27 @@ class Categoria
       $this->connection->runStatement($sql);
 
     }
+
+    public function eliminar($id_categoria){
+        $permiso = false;
+        if($this->verificarCategoriaProductosEliminar($id_categoria)){
+          $sql = "DELETE FROM categorias WHERE id_categoria = '$id_categoria'";
+          $this->connection->runStatement($sql);
+          $permiso = true;
+      }
+      return $permiso;
+    }
+    public function verificarCategoriaProductosEliminar($id_categoria){
+      $permiso = false;
+
+      $sql = "SELECT * FROM productos WHERE id_categoria = '$id_categoria'";
+      $resultado_db = null;
+      $resultado_db = $this->connection->runQuery($sql);
+      if(empty($resultado_db)){
+        $permiso = true;
+      }
+      return $permiso; 
+    }
     
 
   }
