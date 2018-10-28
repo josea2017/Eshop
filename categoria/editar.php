@@ -1,12 +1,13 @@
 <?php 
-$title='Eshop-Crear Categoria';
-$tituloPagina = 'Crear categoría';
+$title='Eshop-Editar Categoria';
+$tituloPagina = 'Editar Categoría';
 require_once '../shared/header.php';
 require_once '../shared/sessions.php';
 require_once '../shared/menu.php';
 require_once '../seguridad/verificar_session.php';
 require_once '../shared/db.php';
 
+//$id=$_GET['id'];
 $id_categoria = $_POST['id_categoria'] ?? '';
 $nombre = $_POST['nombre'] ?? '';
 if($id_categoria != '' && $nombre != ''){
@@ -23,7 +24,7 @@ if($id_categoria != '' && $nombre != ''){
  <link rel="stylesheet" type="text/css" href="../assets/css/style_index_categoria.css">
 
 
-<form action="./nuevo.php" method="POST">
+<form action="./editar.php" method="POST">
 <div class="div_tabla_crear_categoria">
   <table class="tabla_crear_categoria" cellspacing="0" cellpadding="6">
     <tr>
@@ -42,4 +43,3 @@ if($id_categoria != '' && $nombre != ''){
  <?php 
  require_once '../shared/footer.php';
   ?>
-
