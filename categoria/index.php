@@ -6,10 +6,11 @@ require_once '../shared/sessions.php';
 require_once '../shared/menu.php';
 require_once '../seguridad/verificar_session.php';
 require_once '../shared/db.php';
+
  ?>
  <link rel="stylesheet" type="text/css" href="../assets/css/style_index_categoria.css">
 
-<form method="POST">
+<form>
   <table class="table table-hover table-sm" style="text-align: center; margin-top: 0%;" border="1">
     <thead class="table_head">
         <tr>
@@ -27,7 +28,10 @@ require_once '../shared/db.php';
     	            echo "<td>" . $categoria['id_categoria'] . "</td>";
     	            echo "<td>" . $categoria['nombre'] . "</td>";
                   echo "<td>" .
-                     "<a style='font-size: 15px;' class='btn btn-primary' role='button' href='./editar.php'?id=" . $categoria['id_categoria'] . "'>Editar</a>".
+                     /*"<a style='font-size: 15px;' class='btn btn-primary' role='button' href='./editar.php'?id_categoria=" . $categoria['id_categoria'] . "'>Editar</a>".*/
+                     /*" <a type='submit' name='editar' href='./editar.php?saludo=" . $categoria['id_categoria'] . "'>Editar</a>" .*/
+                     " <a style='font-size: 15px;' class='btn btn-primary' role='button' href='./editar.php?id_categoria=" . $categoria['id_categoria'] . "&nombre= " . $categoria['nombre'] ."'>Editar</a>".
+                     /*"<input class='btn btn-primary' type='submit' name='editar' value='" . $categoria['id_categoria'] . "'>" .*/
                      " <a style='font-size: 15px;' class='btn btn-danger' role='button' href='?id=" . $categoria['id_categoria'] . "'>Borrar</a>".
                     "</td>";
     	            echo "</tr>";
@@ -38,8 +42,9 @@ require_once '../shared/db.php';
   </table>
 </form>
 
-
  <?php
+/*<input type="text" name="nombre" autofocus placeholder="Nombre" value="<?= isset($_POST['nombre']) ? $_POST['nombre'] : ''; ?>">*/
+/*<a href="http://url.pagina.destino/?variable1=valor1&variable2=valor2">Enlace a página de destino</a>*/
  //677172
  require_once '../shared/footer.php';
   ?>

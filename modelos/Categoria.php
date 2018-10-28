@@ -43,6 +43,12 @@ class Categoria
       $this->connection->runStatement($sql);
         
     }
+
+    public function editar($id_categoria, $nombre){
+      $sql = "UPDATE categorias SET id_categoria = '$id_categoria', nombre = '$nombre' WHERE id_categoria = '$id_categoria'";
+      $this->connection->runStatement($sql);
+
+    }
     
 
   }
