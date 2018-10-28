@@ -1,5 +1,6 @@
 <?php
 
+namespace Db{
 
     abstract class DbConnection
     {
@@ -23,3 +24,4 @@
         abstract public function runQuery($sql, $params = []);
         abstract public function runStatement($sql, $params = []);
     }
+}

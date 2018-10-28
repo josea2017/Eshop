@@ -1,15 +1,14 @@
 <?php 
 $title='Eshop-Login';
-require_once '../db/PgConnection.php';
 require_once '../shared/header.php';
 require_once '../shared/sessions.php';
+require_once '../shared/db.php';
 $usuario = $_POST['usuario'] ?? null;
 $contrasenna = $_POST['contrasenna'] ?? null;
 
 if($usuario && $contrasenna){
-  $con = new PgConnection('localhost', '5432', 'jose', '12345', 'eshop');
-  $con->connect();
-  $resultado = $con->runQuery('SELECT * FROM usuarios');
+
+  $resultado = $usuario_modelo->listarUsuarios();
   //var_dump($resultado);
   foreach ($resultado as $fila) {
     if($fila['id_usuario'] == $usuario && $fila['contrasenna'] == $contrasenna)
