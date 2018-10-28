@@ -12,6 +12,7 @@ $nombre = $_POST['nombre'] ?? '';
 if($id_categoria != '' && $nombre != ''){
 	if($categoria_modelo->validarRegistro($id_categoria, $nombre)){
 		echo "<script type='text/javascript' href'./registro.php'>alert('Registro exitoso');</script>";
+    return header("Location: ./index.php");
 
 	}else{
 		echo "<script type='text/javascript' href'./nuevo.php'>alert('Datos incompletos y/o Id categoria ya existe');</script>";
