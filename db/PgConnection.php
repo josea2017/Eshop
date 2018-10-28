@@ -1,6 +1,7 @@
 <?php
 
-require_once 'DbConnection.php';
+namespace Db{
+require_once __DIR__ . '/DbConnection.php';
 
     class PgConnection extends DbConnection
     {
@@ -25,13 +26,18 @@ require_once 'DbConnection.php';
         //obtener
         public function runQuery($sql, $params = [])
         {
-            return pg_fetch_all(pg_query_params($this->connection, $sql, $params));
+            /*return pg_fetch_all(pg_query_params($this->connection, $sql, $params));*/
+            return pg_fetch_all($this->runStatement($sql, $params));
+
         }
         public function runStatement($sql, $params = [])
         {
-            pg_prepare($this->connection, "my_query", $sql);
+            /*pg_prepare($this->connection, "my_query", $sql);
             $results = pg_execute($this->connection, "my_query", $params);
             pg_query('DEALLOCATE "my_query"');
-            return $results;
+            return $results;*/
+            return pg_query_params($this->connection, $sql, $params);
+
         }
     }
+}
