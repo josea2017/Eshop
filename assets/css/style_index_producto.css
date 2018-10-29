@@ -4,7 +4,7 @@ table .table_head{
 }
 
 
-.div_tabla_crear_categoria{
+.div_tabla_crear_producto{
 	display: flex;
 	flex-wrap: wrap;
 	width: 50vw;
@@ -13,13 +13,14 @@ table .table_head{
 	margin-left: 35%;
 }
 
-.div_tabla_crear_categoria .tabla_crear_categoria td input{
+.div_tabla_crear_producto .tabla_crear_producto td input{
 	display: inline-block;
     float: right;
 }
 
-.div_tabla_crear_categoria .tabla_crear_categoria td button{
+.div_tabla_crear_producto .tabla_crear_producto td button{
 	margin-left: 37%;
 	width: 63%;
 }
+
 

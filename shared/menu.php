@@ -10,7 +10,8 @@
         <?php
         $menu = [
           'Home' => '../home/index.php',
-          'Adm Categorias' => '../categoria/index.php',
+          'Categorias' => '../categoria/index.php',
+          'Productos' => '../producto/index.php', 
           //'Salir' => '../seguridad/login.php',
         ];
 

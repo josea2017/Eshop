@@ -31,7 +31,7 @@ if($id_categoria != '' && $nombre_nuevo != ''){
       <td>NOMBRE: <input type="text" name="nombre_nuevo" autofocus value="<?= $nombre ?>"></td>
     </tr>
     <tr>
-      <td><button class="btn btn-primary" type="submit">Guardar</button></td>
+      <td><button class="btn btn-primary" type="submit">Editar</button></td>
     </tr>
   </table>
 </div>
