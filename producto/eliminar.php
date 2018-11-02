@@ -6,6 +6,7 @@ require_once '../shared/sessions.php';
 require_once '../shared/menu.php';
 require_once '../seguridad/verificar_session.php';
 require_once '../shared/db.php';
+require_once '../seguridad/verificar_permiso.php';
 
 $id_producto = $_GET["id_producto"] ?? '';
 $nombre = $_GET["nombre"] ?? '';

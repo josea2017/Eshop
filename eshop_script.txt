@@ -33,6 +33,13 @@ create table productos
 	id_categoria varchar not null references categorias(id_categoria)
 );
 
+create table carros
+(
+	id serial,	
+	id_carro int not null primary key,
+	id_usuario varchar not null references usuarios(id_usuario)
+);
+
 
 
 
