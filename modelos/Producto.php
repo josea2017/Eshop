@@ -55,6 +55,11 @@ class Producto
       $sql = "UPDATE productos SET nombre = '$nombre', descripcion = '$descripcion', stock = '$stock', precio = '$precio' WHERE id_producto = '$id_producto'";
       $this->connection->runStatement($sql);
     }
+
+    public function eliminar($id_producto){
+          $sql = "DELETE FROM productos WHERE id_producto = '$id_producto'";
+          $this->connection->runStatement($sql);
+    }
    
     
 
