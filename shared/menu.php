@@ -10,6 +10,7 @@
         <?php
         $menu = [
           'Home' => '../home/index.php',
+          'Catálogo' => '../catalogo/index.php',
           'Categorias' => '../categoria/index.php',
           'Productos' => '../producto/index.php', 
           //'Salir' => '../seguridad/login.php',

@@ -1,15 +1,24 @@
+.div_imagen_producto{
+	display: flex;
+	width: 100vw;
+	height: 30vh;
+	flex-wrap: wrap;
+	position: absolute;
+	margin-left: 36%;
+	margin-top: 2%;
+}
+
 table .table_head{
     background-color: #323434;
     color: #fff;
 }
-
 
 .div_tabla_crear_producto{
 	display: flex;
 	flex-wrap: wrap;
 	width: 50vw;
 	height: 50vw;
-	margin-top: 5%;
+	margin-top: 20%;
 	margin-left: 35%;
 }
 
