@@ -33,16 +33,35 @@ class Producto
       return $resultado;  
     }
 
+    public function encontrarProducto($id_producto)
+    {
+       return $this->connection->runQuery('SELECT * FROM productos WHERE id_producto = $1', [$id_producto])[0];
+    }
+
     public function listarTodosProductos(){
 
         $sql = "SELECT * FROM productos ORDER BY id ASC";
         $resultado = $this->connection->runQuery($sql);
         return $resultado; 
-        /*
-          $res = "SELECT encode(imagen, 'base64') AS imagen FROM imagenes";
-      $result = $this->connection->executeSql($res);
-      return  $this->connection->getResults($result);
-        */
+    }
+
+    public function listarProductosPorIdCategoria($id_categoria)
+    {
+       return $this->connection->runQuery('SELECT * FROM productos WHERE id_categoria = $1', [$id_categoria]);
+    }
+
+    public function listarImagenesProductosPorIdCategoria($id_categoria)
+    {
+      $res = "SELECT encode(imagen, 'base64') AS imagen FROM productos WHERE id_categoria = '$id_categoria'";
+      $resultado = $this->connection->runQuery($res);
+      return $resultado; 
+    }
+
+    public function listarImagenesProductosPorIdProducto($id_producto)
+    {
+      $res = "SELECT encode(imagen, 'base64') AS imagen FROM productos WHERE id_producto = '$id_producto'";
+      $resultado = $this->connection->runQuery($res);
+      return $resultado; 
     }
 
     public function insertar($id_producto, $nombre, $descripcion, $imagen, $stock, $precio, $id_categoria){
