@@ -9,12 +9,19 @@ require_once '../shared/db.php';
 $id_producto = filter_input(INPUT_GET, 'id_producto', FILTER_SANITIZE_STRING);
 $producto = $producto_modelo->encontrarProducto($id_producto);
 $lista_imagenes = $producto_modelo->listarImagenesProductosPorIdProducto($id_producto);
-/*
-  $data = $lista_imagenes[$i]['imagen'];
-  $img = "<img width='20%' src= 'data:image/jpeg;base64, $data' />";
-  echo "<td>" . $img . "</td>";
-*/
-  //echo var_dump($lista_imagenes);
+$id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
+//var_dump($id_carro);
+//echo $id_carro['max'];
+echo $id_carro;
+$carro_nuevo = $_POST['carro_nuevo'] ?? null;
+$agregar_al_carro = $_POST['agregar_al_carro'] ?? null;
+if($carro_nuevo){
+ echo 'Carro nuevo';
+ $carro_modelo->nuevo_insertar($_SESSION['usuario']['id_usuario']);
+}elseif ($agregar_al_carro) {
+  echo 'Agregar al carro';
+}
+
  ?>
 
  <link rel="stylesheet" type="text/css" href="../assets/css/style_index_producto.css">
@@ -27,7 +34,6 @@ $lista_imagenes = $producto_modelo->listarImagenesProductosPorIdProducto($id_pro
           echo $img;
 
    ?>
-     <!--<td class="imagen_producto"><?php //echo $img ?></td>-->
 </div>
 
 <form method="POST">
@@ -49,7 +55,11 @@ $lista_imagenes = $producto_modelo->listarImagenesProductosPorIdProducto($id_pro
       <td>PRECIO: <input type="number" disabled="true" name="precio_nuevo" <?php echo "value= '$producto[precio]'";  ?> ></td>
     </tr>
     <tr>
-      <td><button class="btn btn-success" type="submit" name="agregar_al_carro">Agregar al carro</button></td>
+      <td><button class="btn btn-success" type="submit" name="agregar_al_carro" value="agregar_al_carro">Agregar al carro</button></td>
+    </tr>
+    <tr>
+      <td><button class="btn btn-warning" type="submit" name="carro_nuevo" value="carro_nuevo">Carro nuevo</button></td>
+      <!--<td><input class="btn btn-warning" type="submit" name="pedido_nuevo" value="Pedido nuevo"></td>-->
     </tr>
   </table>
 </div>
