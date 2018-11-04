@@ -5,7 +5,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 60%;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 40%;">
     <ul id="menu_opciones" class="navbar-nav mr-auto">
         <?php
         $menu = [

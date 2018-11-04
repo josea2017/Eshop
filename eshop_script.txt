@@ -35,8 +35,7 @@ create table productos
 
 create table carros
 (
-	id serial,	
-	id_carro int not null primary key,
+	id_carro serial,
 	id_usuario varchar not null references usuarios(id_usuario)
 );
 
