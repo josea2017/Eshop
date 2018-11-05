@@ -39,6 +39,13 @@ create table carros
 	id_usuario varchar not null references usuarios(id_usuario)
 );
 
+create table carros_productos
+(
+	id_carro int not null,
+	id_usuario varchar not null,
+	id_producto varchar not null
+);
+
 
 
 

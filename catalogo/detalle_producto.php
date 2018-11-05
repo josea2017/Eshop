@@ -9,10 +9,10 @@ require_once '../shared/db.php';
 $id_producto = filter_input(INPUT_GET, 'id_producto', FILTER_SANITIZE_STRING);
 $producto = $producto_modelo->encontrarProducto($id_producto);
 $lista_imagenes = $producto_modelo->listarImagenesProductosPorIdProducto($id_producto);
-$id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
+//$id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
 //var_dump($id_carro);
 //echo $id_carro['max'];
-echo $id_carro;
+//echo $id_carro;
 $carro_nuevo = $_POST['carro_nuevo'] ?? null;
 $agregar_al_carro = $_POST['agregar_al_carro'] ?? null;
 if($carro_nuevo){
@@ -20,6 +20,9 @@ if($carro_nuevo){
  $carro_modelo->nuevo_insertar($_SESSION['usuario']['id_usuario']);
 }elseif ($agregar_al_carro) {
   echo 'Agregar al carro';
+  $id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
+  //validar si el número de carro existe en ordenes, si existe primero genera automaticamente otro numero de carro y luego permite insetar la linea
+  $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
 }
 
  ?>
