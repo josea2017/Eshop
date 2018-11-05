@@ -8,6 +8,21 @@ class Producto
       $this->connection = $connection;
     }
 
+
+    public function listarProductosIdProducto($id_producto)
+    {
+      return $this->connection->runQuery('SELECT * FROM productos WHERE id_producto = $1', [$id_producto])[0];
+    }
+
+    public function listarImagenesIdProducto($id_producto)
+    {
+      $res = "SELECT encode(imagen, 'base64') AS imagen FROM productos WHERE id_producto = '$id_producto'";
+      $resultado = $this->connection->runQuery($res)[0];
+      return $resultado;
+      //return $resultado; 
+      //return $this->connection->runQuery('SELECT encode(imagen, base64) AS imagen FROM productos WHERE id_producto = $1', [$id_producto])[0];
+    }
+
     public function listarTodasImagenes()
     {
       //$sql = "SELECT * FROM imagenes ORDER BY id ASC";
