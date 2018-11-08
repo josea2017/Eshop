@@ -13,6 +13,13 @@ class Usuario
           return $result;
     }
 
+    public function buscarUsuarioLogin($usuario){
+        $result = null;
+        $result = $this->connection->runQuery('SELECT * FROM usuarios WHERE id_usuario = $1', [$usuario])[0];
+        return $result;
+
+    }
+
     public function validarRegistro($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna)
     {
     	$resultado = false;

@@ -1,28 +1,6 @@
 <?php 
 $title='Eshop-Login';
 require_once '../shared/header.php';
-require_once '../shared/sessions.php';
-require_once '../shared/db.php';
-$usuario = $_POST['usuario'] ?? null;
-$contrasenna = $_POST['contrasenna'] ?? null;
-
-if($usuario && $contrasenna){
-
-  $resultado = $usuario_modelo->listarUsuarios();
-  //var_dump($resultado);
-  foreach ($resultado as $fila) {
-    if($fila['id_usuario'] == $usuario && $fila['contrasenna'] == $contrasenna)
-    {
-      $_SESSION['usuario'] = $fila;
-      //echo $_SESSION['usuario']['id_usuario'];
-      header("Location: ../home/index.php");
-    }else{
-      echo "<script type='text/javascript' href'./login.php'>alert('Usuario y/o contraseña invalidos');</script>";
-    }
-
-  }
-}
-
  ?>
 <link rel="stylesheet" type="text/css" href="../assets/css/style_login.css">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -52,19 +30,18 @@ if($usuario && $contrasenna){
   </div>
 </nav>
 
-<form action="./login.php" method="POST">
   <div class="caja_login">
     <img class="imagen_login_avatar" src="../assets/imagenes/login_avatar.png">
   </div>
   <div class="datos_login">
     <label class="label_usuario">Usuario: </label>
 
-    <input class="input_usuario" type="text" name="usuario" placeholder="Usuario" autofocus  value="<?= isset($_POST['usuario']) ? $_POST['usuario'] : ''; ?>">
+    <input class="input_usuario" type="text" name="usuario"  id="usuario" placeholder="Usuario" autofocus  value="<?= isset($_POST['usuario']) ? $_POST['usuario'] : ''; ?>">
     <label class="label_contrasenna">Contraseña: </label>
-    <input class="input_contrasenna" type="password" name="contrasenna" placeholder="Contraseña">
+    <input class="input_contrasenna" type="password" name="contrasenna"  id="contrasenna" placeholder="Contraseña">
     <button id="btn_login" class="btn btn-primary" type="submit">Login</button>
+        <div class="container" id="resultado">
   </div>
-</form>
 
 
 
