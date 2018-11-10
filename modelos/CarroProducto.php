@@ -32,6 +32,11 @@ class CarroProducto
       $this->connection->runStatement('DELETE FROM carros_productos WHERE id_carro = $1 AND id_producto = $2', [$id_carro, $id_producto]);
     }
 
+    public function eliminarCarrosProductosIdCarro($id_carro)
+    {
+      $this->connection->runStatement('DELETE FROM carros_productos WHERE id_carro = $1', [$id_carro]);
+    }
+
     public function eliminarTodo()
     {
       $this->connection->runStatement('DELETE FROM carros_productos');

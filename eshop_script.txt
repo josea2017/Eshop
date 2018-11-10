@@ -46,6 +46,14 @@ create table carros_productos
 	id_producto varchar not null
 );
 
+create table ordenes
+(
+	id_carro int not null,
+	id_usuario varchar not null,
+	id_producto varchar not null,
+	precio_producto double precision not null,
+	fecha timestamp not null	
+);
 
 
 
