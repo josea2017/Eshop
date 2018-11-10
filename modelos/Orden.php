@@ -20,6 +20,18 @@ class Orden
          $orden = $this->connection->runQuery('SELECT * FROM ordenes WHERE id_carro = $1', [$id_carro])[0];
          return $orden;
       }
+
+      public function verificarIdCarroDisponible($id_carro)
+      {
+        $disponible = true;
+        $dato = null;
+        $dato = $this->connection->runQuery('SELECT id_carro FROM ordenes WHERE id_carro = $1', [$id_carro]);
+        if($dato != null)
+        {
+          $disponible = false;
+        }
+        return $disponible;
+      }
     
    
   }

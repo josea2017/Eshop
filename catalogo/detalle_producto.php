@@ -18,11 +18,30 @@ $agregar_al_carro = $_POST['agregar_al_carro'] ?? null;
 if($carro_nuevo){
  echo 'Carro nuevo';
  $carro_modelo->nuevo_insertar($_SESSION['usuario']['id_usuario']);
+ $carroProducto_modelo->eliminarTodo();
 }elseif ($agregar_al_carro) {
   echo 'Agregar al carro';
   $id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
-  //validar si el número de carro existe en ordenes, si existe primero genera automaticamente otro numero de carro y luego permite insetar la linea
-  $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
+  if($id_carro)
+  {
+      //validar si el número de carro existe en ordenes, si existe primero genera automaticamente otro numero de carro y luego permite insetar la linea
+      if($orden_modelo->verificarIdCarroDisponible($id_carro))
+      {
+        $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
+        return header('Location: ./index.php');
+      }else{
+        $carro_modelo->nuevo_insertar($_SESSION['usuario']['id_usuario']);
+        $id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
+        $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
+        return header('Location: ./index.php');
+      }
+  }else{
+    $carro_modelo->nuevo_insertar($_SESSION['usuario']['id_usuario']);
+    $id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
+    $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
+    return header('Location: ./index.php');
+  }
+  
 }
 
  ?>
