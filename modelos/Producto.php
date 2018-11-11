@@ -104,6 +104,19 @@ class Producto
           $sql = "DELETE FROM productos WHERE id_producto = '$id_producto'";
           $this->connection->runStatement($sql);
     }
+
+    public function codigoProductosUsuario($id_usuario)
+    {
+      return $this->connection->runQuery('SELECT id_producto FROM ordenes WHERE id_usuario = $1', [$id_usuario]);
+    }
+
+    public function encontrarImagenIdProducto($id_producto)
+    {
+      //return $this->connection->runQuery('SELECT * FROM productos WHERE id_producto = $1', [$id_producto])[0];
+      $res = "SELECT encode(imagen, 'base64') AS imagen FROM productos WHERE id_producto = '$id_producto'";
+      $resultado = $this->connection->runQuery($res)[0];
+      return $resultado; 
+    }
    
     
 
