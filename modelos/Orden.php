@@ -20,6 +20,49 @@ class Orden
          $orden = $this->connection->runQuery('SELECT * FROM ordenes WHERE id_carro = $1', [$id_carro])[0];
          return $orden;
       }
+
+      public function verificarIdCarroDisponible($id_carro)
+      {
+        $disponible = true;
+        $dato = null;
+        $dato = $this->connection->runQuery('SELECT id_carro FROM ordenes WHERE id_carro = $1', [$id_carro]);
+        if($dato != null)
+        {
+          $disponible = false;
+        }
+        return $disponible;
+      }
+
+      public function listaOrdenesPorUsuario($id_usuario)
+      {
+        return $this->connection->runQuery('SELECT id_carro, fecha, SUM(precio_producto) FROM ordenes WHERE id_usuario = $1 GROUP BY id_carro, fecha', [$id_usuario]);
+
+      }
+
+      public function listaOrdenesPorCarro($id_carro)
+      {
+        return $this->connection->runQuery('SELECT * FROM ordenes WHERE id_carro = $1', [$id_carro]);
+
+      }
+
+      public function cantidadDeProductosAdquiridosUsuario($id_usuario)
+      {
+        $cantidad = $this->connection->runQuery('SELECT COUNT(id_producto) FROM ordenes WHERE id_usuario = $1', [$id_usuario])[0];
+        $cantidad = $cantidad['count'];
+        return $cantidad;
+      }
+       public function montoTotalComprasUsuario($id_usuario)
+      {
+        $cantidad = $this->connection->runQuery('SELECT SUM(precio_producto) FROM ordenes WHERE id_usuario = $1', [$id_usuario])[0];
+        $cantidad = $cantidad['sum'];
+        return $cantidad;
+      }
+
+      /*
+            SELECT SUM(precio_producto)
+            FROM ordenes
+            WHERE id_usuario = 'antonioa3712';
+      */
     
    
   }

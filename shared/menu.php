@@ -17,10 +17,11 @@
     <ul id="menu_opciones" class="navbar-nav mr-auto">
         <?php
         $menu = [
-          'Home' => '../home/index.php',
-          'Catálogo' => '../catalogo/index.php',
+          'Home'       => '../home/index.php',
+          'Catálogo'   => '../catalogo/index.php',
+          'Ordenes'    => '../orden/index.php',
           'Categorias' => '../categoria/index.php',
-          'Productos' => '../producto/index.php', 
+          'Productos'  => '../producto/index.php', 
           //'Salir' => '../seguridad/login.php',
         ];
 

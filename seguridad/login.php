@@ -31,7 +31,7 @@ require_once '../shared/header.php';
 </nav>
 
   <div class="caja_login">
-    <img class="imagen_login_avatar" src="../assets/imagenes/login_avatar.png">
+    <img class="imagen_login_avatar" src="../assets/imagenes/login_usuario.png">
   </div>
   <div class="datos_login">
     <label class="label_usuario">Usuario: </label>
