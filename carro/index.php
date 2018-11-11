@@ -32,6 +32,8 @@ if($id_carro)
     foreach ($productos_en_carro as $carroProducto) {
       $date = date("Y-m-d H:i:s"); 
       $orden_modelo->insertarLineaOrden($id_carro, $_SESSION['usuario']['id_usuario'], $carroProducto['id_producto'], $carroProducto['precio'], $date);
+      //rebajar del stock
+      $producto_modelo->rebajarDeStock($carroProducto['id_producto']);
     }
     $carroProducto_modelo->eliminarCarrosProductosIdCarro($id_carro);
     return header('Location: ./index.php');

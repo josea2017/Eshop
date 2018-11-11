@@ -8,6 +8,16 @@ class Producto
       $this->connection = $connection;
     }
 
+    public function rebajarDeStock($id_producto)
+    {
+       $cantidad = $this->connection->runQuery('SELECT stock FROM productos WHERE id_producto = $1', [$id_producto])[0];
+       $cantidad = $cantidad['stock'];
+       $cantidad--;
+       $sql = "UPDATE productos SET stock = '$cantidad' WHERE id_producto = '$id_producto'";
+       $this->connection->runStatement($sql);
+       //return $cantidad;
+    }
+
 
     public function listarProductosIdProducto($id_producto)
     {

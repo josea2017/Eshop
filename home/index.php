@@ -11,7 +11,7 @@ require_once '../seguridad/verificar_session.php';
   <img class="card-img-top" src="../assets/imagenes/informacion.png" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">Estadísticas</h5>
-    <p class="card-text">Estimad@ <?php echo $_SESSION['usuario']['nombre'] ?>, buscamos mejorar su servicio</p>
+    <p class="card-text">Estimad@ <?php echo $_SESSION['usuario']['nombre'] ?>, siempre mejorando su servicio</p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Total de productos adquiridos:</li>
