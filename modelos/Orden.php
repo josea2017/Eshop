@@ -32,6 +32,18 @@ class Orden
         }
         return $disponible;
       }
+
+      public function listaOrdenesPorUsuario($id_usuario)
+      {
+        return $this->connection->runQuery('SELECT id_carro, fecha, SUM(precio_producto) FROM ordenes WHERE id_usuario = $1 GROUP BY id_carro, fecha', [$id_usuario]);
+
+      }
+
+      public function listaOrdenesPorCarro($id_carro)
+      {
+        return $this->connection->runQuery('SELECT * FROM ordenes WHERE id_carro = $1', [$id_carro]);
+
+      }
     
    
   }

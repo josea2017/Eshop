@@ -1,36 +1,38 @@
 <?php 
-$title='Eshop-Catálogo';
-$tituloPagina = 'Catálogo';
+$title='Eshop-Detalle Orden';
+$tituloPagina = 'Detalle Orden';
 require_once '../shared/header.php';
 require_once '../shared/sessions.php';
 require_once '../shared/menu.php';
 require_once '../seguridad/verificar_session.php';
 require_once '../shared/db.php';
+$id_carro = filter_input(INPUT_GET, 'id_carro', FILTER_SANITIZE_STRING);
 
  ?>
  <link rel="stylesheet" type="text/css" href="../assets/css/style_index_categoria.css">
 
-<!--<div class="container">-->
 <form>
   <table class="table table-hover table-sm" style="text-align: center; margin-top: 0%;" border="1">
     <thead class="table_head">
         <tr>
-          <th>ID CATEGORÍA</th>
-          <th>NOMBRE CATEGORÍA</th>
-          <th>DETALLE</th>
+          <th>CARRO</th>
+          <th>USUARIO</th>
+          <th>PRODUCTO</th>
+          <th>PRECIO</th>
+          <th>FECHA <div style="display: inline-block; float: right;"><?php echo "<a style='font-size: 11px;' class='btn btn-primary' role='button' href='./index.php'> Atras </a>" ?></div></th>
         </tr>
     </thead>
         <?php 
-  	      	$lista_categorias = $categoria_modelo->listarTodasCategorias();
-            if(!empty($lista_categorias))
+  	      	$lista_orden_detalle = $orden_modelo->listaOrdenesPorCarro($id_carro);
+            if(!empty($lista_orden_detalle))
             {
-    	        foreach ($lista_categorias as $categoria) {
+    	        foreach ($lista_orden_detalle as $orden) {
     	            echo "<tr>";
-    	            echo "<td>" . $categoria['id_categoria'] . "</td>";
-    	            echo "<td>" . $categoria['nombre'] . "</td>";
-                  echo "<td>" .
-                     " <a style='font-size: 15px;' class='btn btn-primary' role='button' href='./catalogo_productos.php?id_categoria=" . $categoria['id_categoria'] . "'>Detalle</a>".
-                    "</td>";
+    	            echo "<td>" . $orden['id_carro'] . "</td>";
+                  echo "<td>" . $orden['id_usuario'] . "</td>";
+    	            echo "<td>" . $orden['id_producto'] . "</td>";
+                  echo "<td>" . $orden['precio_producto'] . "</td>";
+                  echo "<td>" . $orden['fecha'] . "</td>";
     	            echo "</tr>";
     	        }
            }//class="btn btn-primary"

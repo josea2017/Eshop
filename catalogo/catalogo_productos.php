@@ -19,7 +19,7 @@ $id_categoria = filter_input(INPUT_GET, 'id_categoria', FILTER_SANITIZE_STRING);
           <th>DESCRIPCIÓN</th>
           <th>IMAGEN</th>
           <th>PRECIO</th>
-          <th>OBSERVAR</th>
+          <th>DETALLE</th>
         </tr>
     </thead>
         <?php 
@@ -37,7 +37,7 @@ $id_categoria = filter_input(INPUT_GET, 'id_categoria', FILTER_SANITIZE_STRING);
                   echo "<td>" . $img . "</td>";
                   echo "<td>" . $lista_productos[$i]['precio'] . "</td>";
                   echo "<td>" .
-                     " <a style='font-size: 15px;' class='btn btn-primary' role='button' href='./detalle_producto.php?id_producto=" . $lista_productos[$i]['id_producto'] . "'>OBSERVAR</a>".
+                     " <a style='font-size: 15px;' class='btn btn-primary' role='button' href='./detalle_producto.php?id_producto=" . $lista_productos[$i]['id_producto'] . "'>Detalle</a>".
                     "</td>";
     	            echo "</tr>";
     	        }
