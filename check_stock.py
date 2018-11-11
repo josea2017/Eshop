@@ -18,7 +18,7 @@ def revizar_stock():
     	config.read('ConfigFile.properties')
         # connect to the PostgreSQL server
     	print('Conectando a la base de datos de PostgreSQL...')
-    	conn = connection = psycopg2.connect(user = config.get('postgresql', 'user'),
+    	conn = psycopg2.connect(user = config.get('postgresql', 'user'),
                                   	 	  	password = config.get('postgresql', 'password'),
                                  	 		host = config.get('postgresql', 'host'),
                                   	 		port = config.get('postgresql', 'port'),
@@ -38,7 +38,7 @@ def revizar_stock():
     						FROM productos 
     						INNER JOIN categorias 
     						ON categorias.id_categoria = productos.id_categoria 
-    						AND stock <= %s""" % sys.argv[1])	
+    						AND stock <= %s""" % min_stock)	
     	rows=cursor.fetchall()
     
     	enviar_email(min_stock, config, rows)
@@ -54,7 +54,7 @@ def revizar_stock():
  
 def verficar_parametro(min_stock):
  	try:
- 		float(min_stock).is_integer()
+ 		float(min_stock)
  	except Exception:
  		print('**** Parametro ingresado para revizar el minimo de stock no es numerico ***')
  		sys.exit()
@@ -62,8 +62,11 @@ def verficar_parametro(min_stock):
  
 def enviar_email(min_stock, config, rows):
 	lista_productos = ''
-	for row in rows:
-		lista_productos = lista_productos + '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (row[0], row[1], row[2], row[3], row[4])
+	if rows:
+		for row in rows:
+			lista_productos = lista_productos + '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (row[0], row[1], row[2], row[3], row[4])
+	else:
+		lista_productos = 'Estamos bien en stock'
 	email_content = """
 	<html>
 		<head>
