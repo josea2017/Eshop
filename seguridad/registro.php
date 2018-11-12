@@ -3,7 +3,7 @@ $title='Eshop-Registro';
 require_once '../shared/header.php';
 require_once '../modelos/Usuario.php';
 require_once '../shared/db.php';
-
+/*
 $nombre = $_POST['nombre'] ?? '';
 $apellidos = $_POST['apellidos'] ?? '';
 $telefono = $_POST['telefono'] ?? '';
@@ -13,9 +13,7 @@ $rol = $_POST['rol'] ?? '';
 $usuario = $_POST['usuario'] ?? '';
 $contrasenna = $_POST['contrasenna'] ?? '';
 $confirm_contrasenna = $_POST['confirm_contrasenna'] ?? '';
-/*if($usuario_modelos->validarRegistro($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna, $confirm_contrasenna)){
-  echo "Datos completos";
-}*/
+
 if($contrasenna != '' && $confirm_contrasenna != '')
 {
   if($contrasenna == $confirm_contrasenna)
@@ -28,7 +26,7 @@ if($contrasenna != '' && $confirm_contrasenna != '')
   }else{
     echo "<script type='text/javascript' href'./registro.php'>alert('Las contraseñas deben ser iguales');</script>";
   }
-}
+}*/
   ?>
 
 
@@ -59,7 +57,7 @@ if($contrasenna != '' && $confirm_contrasenna != '')
   </div>
 </nav>
 
-<form action="./registro.php" method="POST">
+<!--<form action="./registro.php" method="POST">-->
 <div class="div_tabla_registro">
   <table class="tabla_registro" cellspacing="0" cellpadding="6">
     <tr>
@@ -84,17 +82,23 @@ if($contrasenna != '' && $confirm_contrasenna != '')
       <td>Usuario: <input type="text" id="usuario" name="usuario" placeholder="Usuario" value="<?= isset($_POST['usuario']) ? $_POST['usuario'] : ''; ?>"></td>
     </tr>
     <tr>
-      <td>Contraseña: <input type="password" id="contrasenna" name="contrasenna" placeholder="Contraseña"></td>
+      <td>Contraseña: <input type="password" id="contrasenna" name="contrasenna" placeholder="Contraseña" value="<?= isset($_POST['contrasenna']) ? $_POST['contrasenna'] : ''; ?>"></td>
     </tr>
      <tr>
-      <td>Confirm Contraseña: <input type="password" id="confirm_contrasenna" name="confirm_contrasenna" placeholder="Confirm contraseña"></td>
+      <td>Confirm Contraseña: <input type="password" id="confirm_contrasenna" name="confirm_contrasenna" placeholder="Confirm contraseña" value="<?= isset($_POST['confirm_contrasenna']) ? $_POST['confirm_contrasenna'] : ''; ?>"></td>
     </tr>
     <tr>
       <td><button class="btn btn-primary" id="btn_registro" type="submit">Registrarse</button></td>
     </tr>
+    <tr>
+      <div class="container" id="resultado_registro_negativo" style="margin-top: -4%;">
+    </tr>
+    <tr>
+      <div class="container" id="resultado_registro_positivo" style="margin-top: -4%;">
+    </tr>
   </table>
 </div>
-</form>
+<!--</form>-->
 
  <?php 
  require_once '../shared/footer.php';
