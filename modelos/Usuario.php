@@ -77,6 +77,13 @@ class Usuario
       $sql = "INSERT INTO usuarios(nombre, apellidos, telefono, correo, direccion, rol, id_usuario, contrasenna) VALUES ('$nombre','$apellidos', '$telefono', '$correo', '$direccion', '$rol', '$usuario', '$contrasenna')";
       $this->connection->runStatement($sql);
     }
+
+    public function cantidadClientesRegistrados()
+    {
+        $cantidad = $this->connection->runQuery("SELECT COUNT(id_usuario) FROM usuarios WHERE rol = 'cliente'")[0];
+        $cantidad = $cantidad['count'];
+        return $cantidad;
+    }
     
 
   }
