@@ -51,19 +51,26 @@ class Orden
         $cantidad = $cantidad['count'];
         return $cantidad;
       }
-       public function montoTotalComprasUsuario($id_usuario)
+      public function montoTotalComprasUsuario($id_usuario)
       {
         $cantidad = $this->connection->runQuery('SELECT SUM(precio_producto) FROM ordenes WHERE id_usuario = $1', [$id_usuario])[0];
         $cantidad = $cantidad['sum'];
         return $cantidad;
       }
 
-      /*
-            SELECT SUM(precio_producto)
-            FROM ordenes
-            WHERE id_usuario = 'antonioa3712';
-      */
-    
+      public function cantidadProductosVendidos()
+      {
+          $cantidad = $this->connection->runQuery("SELECT COUNT(id_producto) FROM ordenes")[0];
+          $cantidad = $cantidad['count'];
+          return $cantidad;
+      }
+      public function totalEnVentas()
+      {
+          $cantidad = $this->connection->runQuery("SELECT SUM(precio_producto) FROM ordenes")[0];
+          $cantidad = $cantidad['sum'];
+          return $cantidad;
+      }
+
    
   }
 

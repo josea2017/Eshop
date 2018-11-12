@@ -8,6 +8,9 @@ require_once '../seguridad/verificar_session.php';
 require_once '../shared/db.php';
 $cantidadProductosUsuario = $orden_modelo->cantidadDeProductosAdquiridosUsuario($_SESSION['usuario']['id_usuario']) ?? 0;
 $montoTotalComprasUsuario = $orden_modelo->montoTotalComprasUsuario($_SESSION['usuario']['id_usuario']) ?? 0;
+$totalClientesRegistrados = $usuario_modelo->cantidadClientesRegistrados() ?? 0;
+$cantidadProductosVendidos = $orden_modelo->cantidadProductosVendidos() ?? 0;
+$totalEnVentas = $orden_modelo->totalEnVentas() ?? 0;
  ?>
 <div class="row">
   <div class="col-sm-3">
@@ -15,13 +18,24 @@ $montoTotalComprasUsuario = $orden_modelo->montoTotalComprasUsuario($_SESSION['u
         <img class="card-img-top" src="../assets/imagenes/informacion.png" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Estadísticas</h5>
-          <p class="card-text">Estimad@ <?php echo $_SESSION['usuario']['nombre'] ?>, siempre mejorando su servicio</p>
+          <p class="card-text">Estimad@ <?php echo $_SESSION['usuario']['nombre'] ?>, siempre mejorando tiempos en entregas</p>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Total de productos adquiridos: <?php echo $cantidadProductosUsuario ?></li>
-          <li class="list-group-item">Monto total en compras: $<?php echo $montoTotalComprasUsuario ?></li>
-          <li class="list-group-item" style="text-align: center;"><img src="../assets/imagenes/informacion_pequenno.svg" width="40" height="40" alt=""><strong>Eshop</strong></li>
-        </ul>
+        <?php if($_SESSION['usuario']['rol'] == 'cliente')
+        { ?>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Total de productos adquiridos: <?php echo $cantidadProductosUsuario ?></li>
+            <li class="list-group-item">Monto total en compras: $<?php echo $montoTotalComprasUsuario ?></li>
+            <li class="list-group-item" style="text-align: center;"><img src="../assets/imagenes/informacion_pequenno.svg" width="40" height="40" alt=""><strong>Eshop</strong></li>
+          </ul>
+        <?php }else{ ?>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cant. Clientes: <?php echo $totalClientesRegistrados ?></li>
+                    <li class="list-group-item">Cant. Productos vendidos: <?php echo $cantidadProductosVendidos ?></li>
+                    <li class="list-group-item">Total en ventas: $<?php echo $totalEnVentas ?></li>
+                    <li class="list-group-item" style="text-align: center;"><img src="../assets/imagenes/informacion_pequenno.svg" width="40" height="40" alt=""><strong>Eshop</strong></li>
+                  </ul>
+              <?php
+               }?>
     </div>
   </div>
   <div class="col-sm-8">
