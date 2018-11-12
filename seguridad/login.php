@@ -40,7 +40,7 @@ require_once '../shared/header.php';
     <label class="label_contrasenna">Contraseña: </label>
     <input class="input_contrasenna" type="password" name="contrasenna"  id="contrasenna" placeholder="Contraseña">
     <button id="btn_login" class="btn btn-primary" type="submit">Login</button>
-        <div class="container" id="resultado">
+        <div class="container" id="resultado" style="margin-top: -4%;">
   </div>
 
 
