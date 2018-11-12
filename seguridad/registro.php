@@ -19,14 +19,31 @@ if($contrasenna != '' && $confirm_contrasenna != '')
   if($contrasenna == $confirm_contrasenna)
   {
     if($usuario_modelo->validarRegistro($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna)){
-      echo "<script type='text/javascript' href'./registro.php'>alert('Registro exitoso');</script>";
+      //echo "<script type='text/javascript' href'./registro.php'>alert('Registro exitoso');</script>";
+      ?>
+        <div class="alert alert-success" role="alert">
+          Registro exitoso <a href="#" class="alert-link"></a>
+        </div>
+      <?php
     }else{
-      echo "<script type='text/javascript' href'./registro.php'>alert('Datos incompletos y/o usuario ya existe');</script>";
+            //echo "<script type='text/javascript' href'./registro.php'>alert('Datos incompletos y/o usuario ya existe');</script>";
+      ?>
+      
+      <div class="alert alert-danger" role="alert">
+          Datos incompletos y/o usuario ya existe <a href="#" class="alert-link"></a>
+      </div>
+      <?php 
     }
   }else{
-    echo "<script type='text/javascript' href'./registro.php'>alert('Las contraseñas deben ser iguales');</script>";
+    //echo "<script type='text/javascript' href'./registro.php'>alert('Las contraseñas deben ser iguales');</script>";
+    ?>
+      <div class="alert alert-danger" role="alert">
+          Las contraseñas deben ser iguales <a href="#" class="alert-link"></a>
+      </div>
+    <?php
   }
-}*/
+}
+*/
   ?>
 
 
