@@ -44,7 +44,6 @@ require_once '../shared/header.php';
   </div>
 
 
-
  <?php 
  require_once '../shared/footer.php';
   ?>
