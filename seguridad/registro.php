@@ -63,34 +63,34 @@ if($contrasenna != '' && $confirm_contrasenna != '')
 <div class="div_tabla_registro">
   <table class="tabla_registro" cellspacing="0" cellpadding="6">
     <tr>
-      <td>Nombre: <input type="text" name="nombre" autofocus placeholder="Nombre" value="<?= isset($_POST['nombre']) ? $_POST['nombre'] : ''; ?>"></td>
+      <td>Nombre: <input type="text" id="nombre" name="nombre" autofocus placeholder="Nombre" value="<?= isset($_POST['nombre']) ? $_POST['nombre'] : ''; ?>"></td>
     </tr>
     <tr>
-      <td>Apellidos: <input type="text" name="apellidos" placeholder="Apellidos" value="<?= isset($_POST['apellidos']) ? $_POST['apellidos'] : ''; ?>"></td>
+      <td>Apellidos: <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" value="<?= isset($_POST['apellidos']) ? $_POST['apellidos'] : ''; ?>"></td>
     </tr>
     <tr>
-      <td>Telefono: <input type="text" name="telefono" placeholder="Telefono" value="<?= isset($_POST['telefono']) ? $_POST['telefono'] : ''; ?>"></td>
+      <td>Telefono: <input type="text" id="telefono" name="telefono" placeholder="Telefono" value="<?= isset($_POST['telefono']) ? $_POST['telefono'] : ''; ?>"></td>
     </tr>
     <tr>
-      <td>Correo: <input type="text" name="correo" placeholder="Correo" value="<?= isset($_POST['correo']) ? $_POST['correo'] : ''; ?>"></td>
+      <td>Correo: <input type="text" id="correo" name="correo" placeholder="Correo" value="<?= isset($_POST['correo']) ? $_POST['correo'] : ''; ?>"></td>
     </tr>
     <tr>
-      <td>Dirección: <input type="text" name="direccion" placeholder="Dirección" value="<?= isset($_POST['direccion']) ? $_POST['direccion'] : ''; ?>"></td>
+      <td>Dirección: <input type="text" id="direccion" name="direccion" placeholder="Dirección" value="<?= isset($_POST['direccion']) ? $_POST['direccion'] : ''; ?>"></td>
     </tr>
     <tr>
-      <td><input type="hidden" name="rol" value="cliente" value="<?= isset($_POST['rol']) ? $_POST['rol'] : ''; ?>"></td>
+      <td><input type="hidden" id="rol" name="rol" value="cliente" value="<?= isset($_POST['rol']) ? $_POST['rol'] : ''; ?>"></td>
     </tr>
     <tr>
-      <td>Usuario: <input type="text" name="usuario" placeholder="Usuario" value="<?= isset($_POST['usuario']) ? $_POST['usuario'] : ''; ?>"></td>
+      <td>Usuario: <input type="text" id="usuario" name="usuario" placeholder="Usuario" value="<?= isset($_POST['usuario']) ? $_POST['usuario'] : ''; ?>"></td>
     </tr>
     <tr>
-      <td>Contraseña: <input type="password" name="contrasenna" placeholder="Contraseña"></td>
+      <td>Contraseña: <input type="password" id="contrasenna" name="contrasenna" placeholder="Contraseña"></td>
     </tr>
      <tr>
-      <td>Confirm Contraseña: <input type="password" name="confirm_contrasenna" placeholder="Confirm contraseña"></td>
+      <td>Confirm Contraseña: <input type="password" id="confirm_contrasenna" name="confirm_contrasenna" placeholder="Confirm contraseña"></td>
     </tr>
     <tr>
-      <td><button class="btn btn-primary" type="submit">Registrarse</button></td>
+      <td><button class="btn btn-primary" id="btn_registro" type="submit">Registrarse</button></td>
     </tr>
   </table>
 </div>
