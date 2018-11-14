@@ -8,6 +8,17 @@ class CarroProducto
       $this->connection = $connection;
     }
 
+    public function validarStock($id_producto)
+    {
+      $respuesta = false;
+      $cantidad = $this->connection->runQuery('SELECT stock FROM productos WHERE id_producto = $1', [$id_producto])[0];
+      $cantidad = $cantidad['stock'];
+      if($cantidad > 0){
+        $respuesta = true;
+      }
+      return $respuesta;
+    }
+
     public function insertarLinea($id_carro, $id_usuario, $id_producto)
     {
       $this->connection->runStatement('INSERT INTO carros_productos(id_carro, id_usuario, id_producto) VALUES ($1, $2, $3)', [$id_carro, $id_usuario, $id_producto]);
