@@ -27,19 +27,26 @@ if($carro_nuevo){
       //validar si el número de carro existe en ordenes, si existe primero genera automaticamente otro numero de carro y luego permite insetar la linea
       if($orden_modelo->verificarIdCarroDisponible($id_carro))
       {
-        $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
-        return header('Location: ./index.php');
+        if($carroProducto_modelo->validarStock($producto['id_producto']))
+        {
+          $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
+          return header('Location: ./index.php');
+        }else{echo "Lo sentimos, inventario en cero";}
       }else{
+        if($carroProducto_modelo->validarStock($producto['id_producto'])){
+            $carro_modelo->nuevo_insertar($_SESSION['usuario']['id_usuario']);
+            $id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
+            $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
+            return header('Location: ./index.php');
+          }else{echo "Lo sentimos, inventario en cero";}
+      }
+  }else{
+    if($carroProducto_modelo->validarStock($producto['id_producto'])){
         $carro_modelo->nuevo_insertar($_SESSION['usuario']['id_usuario']);
         $id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
         $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
         return header('Location: ./index.php');
-      }
-  }else{
-    $carro_modelo->nuevo_insertar($_SESSION['usuario']['id_usuario']);
-    $id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
-    $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
-    return header('Location: ./index.php');
+      }else{echo "Lo sentimos, inventario en cero";}
   }
   
 }
