@@ -11,33 +11,54 @@ $montoTotalComprasUsuario = $orden_modelo->montoTotalComprasUsuario($_SESSION['u
 $totalClientesRegistrados = $usuario_modelo->cantidadClientesRegistrados() ?? 0;
 $cantidadProductosVendidos = $orden_modelo->cantidadProductosVendidos() ?? 0;
 $totalEnVentas = $orden_modelo->totalEnVentas() ?? 0;
+/*
+if(isset($_POST['btn_stock']))
+{
+  $min_stock = $_POST['stock'] ?? '';
+  //echo $min_stock;
+  //shell_exec('/path/to/python /path/to/your/check_stock.py ' . $hello);
+  //shell_exec('../check_stock.py ' . $min_stock);
+}
+//require_once __DIR__ . '/../Db/PgConnection.php';
+
+
+<form action="fichero.py/funcion" method="post">
+<p>Tu nombre: <input type="text" name="nombre" value=""/></p>
+<p><input type="submit" value="OK"/></p>
+</form>
+*/
  ?>
+
+
 <div class="row">
-  <div class="col-sm-3">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="../assets/imagenes/informacion.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Estadísticas</h5>
-          <p class="card-text">Estimad@ <?php echo $_SESSION['usuario']['nombre'] ?>, siempre mejorando tiempos en entregas</p>
-        </div>
-        <?php if($_SESSION['usuario']['rol'] == 'cliente')
-        { ?>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Total de productos adquiridos: <?php echo $cantidadProductosUsuario ?></li>
-            <li class="list-group-item">Monto total en compras: $<?php echo $montoTotalComprasUsuario ?></li>
-            <li class="list-group-item" style="text-align: center;"><img src="../assets/imagenes/informacion_pequenno.svg" width="40" height="40" alt=""><strong>Eshop</strong></li>
-          </ul>
-        <?php }else{ ?>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cant. Clientes: <?php echo $totalClientesRegistrados ?></li>
-                    <li class="list-group-item">Cant. Productos vendidos: <?php echo $cantidadProductosVendidos ?></li>
-                    <li class="list-group-item">Total en ventas: $<?php echo $totalEnVentas ?></li>
-                    <li class="list-group-item" style="text-align: center;"><img src="../assets/imagenes/informacion_pequenno.svg" width="40" height="40" alt=""><strong>Eshop</strong></li>
-                  </ul>
-              <?php
-               }?>
+  <form action="#" method="POST">
+    <div class="col-sm-3">
+      <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../assets/imagenes/informacion.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Estadísticas</h5>
+            <p class="card-text">Estimad@ <?php echo $_SESSION['usuario']['nombre'] ?>, siempre mejorando tiempos en entregas</p>
+          </div>
+          <?php if($_SESSION['usuario']['rol'] == 'cliente')
+          { ?>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Total de productos adquiridos: <?php echo $cantidadProductosUsuario ?></li>
+              <li class="list-group-item">Monto total en compras: $<?php echo $montoTotalComprasUsuario ?></li>
+              <li class="list-group-item" style="text-align: center;"><img src="../assets/imagenes/informacion_pequenno.svg" width="40" height="40" alt=""><strong>Eshop</strong></li>
+            </ul>
+          <?php }else{ ?>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Cant. Clientes: <?php echo $totalClientesRegistrados ?></li>
+                      <li class="list-group-item">Cant. Productos vendidos: <?php echo $cantidadProductosVendidos ?></li>
+                      <li class="list-group-item">Total en ventas: $<?php echo $totalEnVentas ?></li>
+                      <li class="list-group-item">Stock: <input type="number" style="width: 90px;" name="stock"><button name="btn_stock" type="submit">OK</button></li>
+                      <li class="list-group-item" style="text-align: center;"><img src="../assets/imagenes/informacion_pequenno.svg" width="40" height="40" alt=""><strong>Eshop</strong></li>
+                    </ul>
+                <?php
+                 }?>
+      </div>
     </div>
-  </div>
+  </form>
   <div class="col-sm-8">
       <div class="card">
         <ul class="list-group list-group-flush">
