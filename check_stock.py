@@ -10,13 +10,13 @@ def revizar_stock():
     """ Capturtar parametro en variable """
     min_stock = sys.argv[1]
     verficar_parametro(min_stock)
-    """ Connect to the PostgreSQL database server """
+    """ Variable para conectar con PostgreSQL """
     conn = None
     try:
-        # read connection parameters
+        # Lectura de parametros de conexion
     	config = configparser.RawConfigParser()
     	config.read('ConfigFile.properties')
-        # connect to the PostgreSQL server
+        # Conectar a PostgreSql
     	print('Conectando a la base de datos de PostgreSQL...')
     	conn = psycopg2.connect(user = config.get('postgresql', 'user'),
                                   	 	  	password = config.get('postgresql', 'password'),
@@ -24,7 +24,7 @@ def revizar_stock():
                                   	 		port = config.get('postgresql', 'port'),
                                   	 		database = config.get('postgresql', 'database'))
 
-        # create a cursor
+        # Se crea cursor para realizar consultas a la base de datos
     	cursor = conn.cursor()
         
  		# execute a statement
@@ -43,7 +43,7 @@ def revizar_stock():
     
     	enviar_email(min_stock, config, rows)
      	
-     	# close the communication with the PostgreSQL
+     	# Se cierra la conexion del cursor
     	cursor.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
