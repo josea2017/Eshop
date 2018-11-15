@@ -11,17 +11,19 @@ $montoTotalComprasUsuario = $orden_modelo->montoTotalComprasUsuario($_SESSION['u
 $totalClientesRegistrados = $usuario_modelo->cantidadClientesRegistrados() ?? 0;
 $cantidadProductosVendidos = $orden_modelo->cantidadProductosVendidos() ?? 0;
 $totalEnVentas = $orden_modelo->totalEnVentas() ?? 0;
-/*
+
 if(isset($_POST['btn_stock']))
 {
   $min_stock = $_POST['stock'] ?? '';
-  //echo $min_stock;
-  //shell_exec('/path/to/python /path/to/your/check_stock.py ' . $hello);
-  //shell_exec('../check_stock.py ' . $min_stock);
+  //exec('/usr/bin/python2.7 /srv/http/assets/py/switch.py arg1 arg2'); importante
+  //https://stackoverflow.com/questions/19735250/running-a-python-script-from-php
+  //$command = escapeshellcmd('C:/xampp/htdocs/Eshop/check_stock.py ' . $min_stock);
+  //exec('C:/Windows/py C:/xampp/htdocs/Eshop/check_stock.py $min_stock');
+  exec('C:/xampp/htdocs/Eshop/check_stock.py ' . $min_stock);
 }
 //require_once __DIR__ . '/../Db/PgConnection.php';
 
-
+/*
 <form action="fichero.py/funcion" method="post">
 <p>Tu nombre: <input type="text" name="nombre" value=""/></p>
 <p><input type="submit" value="OK"/></p>
