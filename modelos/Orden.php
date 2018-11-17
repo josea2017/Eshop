@@ -41,7 +41,16 @@ class Orden
 
       public function listaOrdenesPorCarro($id_carro)
       {
-        return $this->connection->runQuery('SELECT * FROM ordenes WHERE id_carro = $1', [$id_carro]);
+        /*
+            SELECT ordenes.id_carro, ordenes.id_usuario, productos.nombre, ordenes.precio_producto, ordenes.fecha 
+            FROM ordenes 
+            INNER JOIN productos 
+            ON ordenes.id_producto = productos.id_producto
+            WHERE ordenes.id_carro = 47;
+        */
+        //return $this->connection->runQuery('SELECT * FROM ordenes WHERE id_carro = $1', [$id_carro]);
+          return $this->connection->runQuery('SELECT ordenes.id_carro, ordenes.id_usuario, productos.nombre, ordenes.precio_producto,
+            ordenes.fecha FROM ordenes INNER JOIN productos ON ordenes.id_producto = productos.id_producto WHERE ordenes.id_carro = $1', [$id_carro]);
 
       }
 
