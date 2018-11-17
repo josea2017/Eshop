@@ -43,7 +43,7 @@ $id_carro = filter_input(INPUT_GET, 'id_carro', FILTER_SANITIZE_STRING);
     	            echo "<tr>";
     	            echo "<td>" . $orden['id_carro'] . "</td>";
                   echo "<td>" . $orden['id_usuario'] . "</td>";
-    	            echo "<td>" . $orden['id_producto'] . "</td>";
+    	            echo "<td>" . $orden['nombre'] . "</td>";
                   echo "<td>" . $orden['precio_producto'] . "</td>";
                   echo "<td>" . $orden['fecha'] . "</td>";
     	            echo "</tr>";
