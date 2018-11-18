@@ -75,7 +75,7 @@ if($contrasenna != '' && $confirm_contrasenna != '')
 </nav>
 
 <!--<form action="./registro.php" method="POST">-->
-<div class="div_tabla_registro">
+<div class="div_tabla_registro" style="margin-top: 110px;">
   <table class="tabla_registro" cellspacing="0" cellpadding="6">
     <tr>
       <td>Nombre: <input type="text" id="nombre" name="nombre" autofocus placeholder="Nombre" value="<?= isset($_POST['nombre']) ? $_POST['nombre'] : ''; ?>"></td>
@@ -107,13 +107,9 @@ if($contrasenna != '' && $confirm_contrasenna != '')
     <tr>
       <td><button class="btn btn-primary" id="btn_registro" type="submit">Registrarse</button></td>
     </tr>
-    <tr>
-      <div class="container" id="resultado_registro_negativo" style="margin-top: -4%;">
-    </tr>
-    <tr>
-      <div class="container" id="resultado_registro_positivo" style="margin-top: -4%;">
-    </tr>
   </table>
+  <div class="container" id="resultado_registro_negativo" style="display: flex; position: absolute; margin-top: 30%; width: 600px;">
+  <div class="container" id="resultado_registro_positivo" style="display: flex; position: absolute; margin-top: 30%; width: 600px;">
 </div>
 <!--</form>-->
 

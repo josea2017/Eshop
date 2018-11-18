@@ -23,7 +23,7 @@ if($usuario && $contrasenna){
     }
 
   }*/
-  if($resultado['id_usuario'] == $usuario && $resultado['contrasenna'] == $contrasenna)
+  if($resultado['id_usuario'] == $usuario && $resultado['contrasenna'] == md5($contrasenna))
   { 
     $_SESSION['usuario'] = $resultado;
     echo "true";

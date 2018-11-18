@@ -1,6 +1,5 @@
-$(document).ready(ini);
+$(document).ready(function() {
 
-function ini() {
 
       $('#btn_login').on('click', function() {
 
@@ -38,8 +37,9 @@ function ini() {
         url: "../seguridad/registroValidar.php",
         success: function (result) {
           if (result.trim() == "true") {
+            document.location.href = "../seguridad/login.php";
             //document.location.href = "../home/index.php";
-            $("#resultado_registro_positivo").html('<div class="alert alert-success" role="alert" id>Registro exitoso.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            //$("#resultado_registro_positivo").html('<div class="alert alert-success" role="alert" id>Registro exitoso.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
           } else {
             $("#resultado_registro_negativo").html('<div class="alert alert-danger" role="alert" id>No se logró, contraseñas diferentes o usuario ya existe.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
           }
@@ -70,7 +70,4 @@ $usuario = $_POST['usuario'] ?? null;
 $contrasenna = $_POST['contrasenna'] ?? null;
 $confirm_contrasenna = $_POST['confirm_contrasenna'] ?? null;
 */
-
-
-
-}
+});

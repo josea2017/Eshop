@@ -1,5 +1,4 @@
 <?php 
-require_once '../shared/header.php';
 require_once '../modelos/Usuario.php';
 require_once '../shared/db.php';
 
@@ -18,12 +17,12 @@ if($contrasenna != null && $confirm_contrasenna != null)
   if($contrasenna == $confirm_contrasenna)
   {
     if($usuario_modelo->validarRegistro($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna)){
-      echo "true";
+      echo 'true';
     }else{
-      echo "false";
+      echo 'false';
     }
   }else{
-    echo "false";
+    echo 'false';
   }
 }
 
