@@ -30,17 +30,17 @@ require_once '../shared/header.php';
   </div>
 </nav>
 
-  <div class="caja_login">
+  <div class="caja_login" style="margin-top: -2%;">
     <img class="imagen_login_avatar" src="../assets/imagenes/login_usuario.png">
   </div>
-  <div class="datos_login">
+  <div class="datos_login" style="margin-top: -3%;">
     <label class="label_usuario">Usuario: </label>
 
     <input class="input_usuario" type="text" name="usuario"  id="usuario" placeholder="Usuario" autofocus  value="<?= isset($_POST['usuario']) ? $_POST['usuario'] : ''; ?>">
     <label class="label_contrasenna">Contraseña: </label>
     <input class="input_contrasenna" type="password" name="contrasenna"  id="contrasenna" placeholder="Contraseña">
     <button id="btn_login" class="btn btn-primary" type="submit">Login</button>
-        <div class="container" id="resultado" style="margin-top: -4%;">
+        <div class="container" id="resultado" style="margin-top: 45%;">
   </div>
 
 
