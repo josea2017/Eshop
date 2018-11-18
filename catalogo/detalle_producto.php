@@ -16,11 +16,9 @@ $lista_imagenes = $producto_modelo->listarImagenesProductosPorIdProducto($id_pro
 $carro_nuevo = $_POST['carro_nuevo'] ?? null;
 $agregar_al_carro = $_POST['agregar_al_carro'] ?? null;
 if($carro_nuevo){
- echo 'Carro nuevo';
  $carro_modelo->nuevo_insertar($_SESSION['usuario']['id_usuario']);
  $carroProducto_modelo->eliminarTodo();
 }elseif ($agregar_al_carro) {
-  echo 'Agregar al carro';
   $id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
   if($id_carro)
   {
@@ -31,14 +29,24 @@ if($carro_nuevo){
         {
           $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
           return header('Location: ./index.php');
-        }else{echo "Lo sentimos, inventario en cero";}
+        }else{/*echo "Lo sentimos, inventario en cero";*/?>
+              <div class="alert alert-warning" role="alert">
+                Lo sentimos, inventario en cero
+              </div>
+        
+              <?php 
+            }
       }else{
         if($carroProducto_modelo->validarStock($producto['id_producto'])){
             $carro_modelo->nuevo_insertar($_SESSION['usuario']['id_usuario']);
             $id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
             $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
             return header('Location: ./index.php');
-          }else{echo "Lo sentimos, inventario en cero";}
+          }else{?> <div class="alert alert-warning" role="alert">
+                        Lo sentimos, inventario en cero
+                    </div> 
+                 <?php
+                }
       }
   }else{
     if($carroProducto_modelo->validarStock($producto['id_producto'])){
@@ -46,7 +54,13 @@ if($carro_nuevo){
         $id_carro = $carro_modelo->ultimoCarroDeUsuario($_SESSION['usuario']['id_usuario'])['max'] ?? null;
         $carroProducto_modelo->insertarLinea($id_carro, $_SESSION['usuario']['id_usuario'], $producto['id_producto']);
         return header('Location: ./index.php');
-      }else{echo "Lo sentimos, inventario en cero";}
+      }else{?> 
+                <div class="alert alert-warning" role="alert">
+                    Lo sentimos, inventario en cero
+                </div>
+
+            <?php
+          }
   }
   //<div class="div_imagen_producto" style="display: flex; align-items: center; width: 75%; margin-left: 300px;">
    
