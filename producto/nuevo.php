@@ -44,6 +44,9 @@ if(isset($_POST['btn_guardar_producto'])){
 
 
 <form action="./nuevo.php" method="POST" enctype="multipart/form-data">
+<div class="caja_login" style="display: flex; position: absolute; margin-top: -7%; margin-left: 47%;">
+  <img src="../assets/imagenes/nuevo.png">
+</div>
 <div class="div_tabla_crear_producto" style="margin-top: 120px;">
   <table class="tabla_crear_producto" cellspacing="0" cellpadding="6">
     <tr>

@@ -23,7 +23,10 @@ if($id_categoria != '' && $nombre_nuevo != ''){
 
 
 <form method="POST">
-<div class="div_tabla_crear_categoria">
+<div class="caja_login" style="display: flex; position: absolute; margin-top: -10%; margin-left: 47%;">
+  <img src="../assets/imagenes/editar.png">
+</div>
+<div class="div_tabla_crear_categoria" style="margin-top: 15%;">
   <table class="tabla_crear_categoria" cellspacing="0" cellpadding="6">
     <tr>
       <td>ID CATEGORIA: <input type="text" disabled="true" name="id_categoria" value="<?= $id_categoria ?>"></td>

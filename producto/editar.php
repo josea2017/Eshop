@@ -43,6 +43,9 @@ if(isset($_POST['btn_editar_producto'])){
 
 
 <form method="POST">
+<div class="caja_login" style="display: flex; position: absolute; margin-top: -2%; margin-left: 1%;">
+  <img src="../assets/imagenes/editar.png">
+</div>
 <div class="div_tabla_editar_producto">
   <div><?php echo $img ?></div>
   <table class="tabla_crear_producto" cellspacing="0" cellpadding="6" style="margin-top: -120px; margin-left: 100px;">
