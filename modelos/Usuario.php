@@ -29,6 +29,7 @@ class Usuario
     	}*/
     	if($this->validarRegistroDatosCompletos($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna) && $this->validarRegistroUsuarioDisponible($usuario)){
     		$resultado = true;
+
             $this->insertar($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna);
     	}
     	return $resultado;    
@@ -74,7 +75,11 @@ class Usuario
 
     public function insertar($nombre, $apellidos, $telefono, $correo, $direccion, $rol, $usuario, $contrasenna)
     {
-      $sql = "INSERT INTO usuarios(nombre, apellidos, telefono, correo, direccion, rol, id_usuario, contrasenna) VALUES ('$nombre','$apellidos', '$telefono', '$correo', '$direccion', '$rol', '$usuario', '$contrasenna')";
+      /*
+            $sql = "INSERT INTO usuarios(email, password) VALUES ($1, md5($2))";
+            $this->connection->runStatement($sql, [$email, $password]);
+      */
+      $sql = "INSERT INTO usuarios(nombre, apellidos, telefono, correo, direccion, rol, id_usuario, contrasenna) VALUES ('$nombre','$apellidos', '$telefono', '$correo', '$direccion', '$rol', '$usuario', md5('$contrasenna'))";
       $this->connection->runStatement($sql);
     }
 
