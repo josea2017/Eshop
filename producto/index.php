@@ -12,7 +12,7 @@ require_once '../seguridad/verificar_permiso.php';
  <link rel="stylesheet" type="text/css" href="../assets/css/style_index_producto.css">
 
 <form>
-  <table class="table table-hover table-sm" style="text-align: center; margin-top: 0%;" border="1">
+  <table class="table table-hover text-center" style="text-align: center; margin-top: 0%;" border="1">
     <thead class="table_head">
         <tr>
           <th>ID PRODUCTO</th>
@@ -43,9 +43,9 @@ require_once '../seguridad/verificar_permiso.php';
                   echo "<td>" . $lista_productos[$i]['precio'] . "</td>";
                   echo "<td>" . $lista_productos[$i]['id_categoria'] . "</td>";
                   echo "<td>" .
-                     " <a style='font-size: 15px;' class='btn btn-primary' role='button' href='./editar.php?id_producto=" . $lista_productos[$i]['id_producto'] . "&nombre= " . $lista_productos[$i]['nombre'] . "&descripcion= " . $lista_productos[$i]['descripcion'] . "&stock= " . $lista_productos[$i]['stock'] . "&precio= " . $lista_productos[$i]['precio'] . "'>Editar</a>".
+                     " <a style='font-size: 13px;' class='btn btn-primary' role='button' href='./editar.php?id_producto=" . $lista_productos[$i]['id_producto'] . "&nombre= " . $lista_productos[$i]['nombre'] . "&descripcion= " . $lista_productos[$i]['descripcion'] . "&stock= " . $lista_productos[$i]['stock'] . "&precio= " . $lista_productos[$i]['precio'] . "'>Editar</a>".
                      
-                     " <a style='font-size: 15px;' class='btn btn-danger' role='button' href='./eliminar.php?id_producto=" . $lista_productos[$i]['id_producto'] . "&nombre= " . $lista_productos[$i]['nombre'] . "&descripcion= " . $lista_productos[$i]['descripcion'] . "&stock= " . $lista_productos[$i]['stock'] . "&precio= " . $lista_productos[$i]['precio'] . "'>Eliminar</a>".
+                     " <a style='font-size: 13px;' class='btn btn-danger' role='button' href='./eliminar.php?id_producto=" . $lista_productos[$i]['id_producto'] . "&nombre= " . $lista_productos[$i]['nombre'] . "&descripcion= " . $lista_productos[$i]['descripcion'] . "&stock= " . $lista_productos[$i]['stock'] . "&precio= " . $lista_productos[$i]['precio'] . "'>Eliminar</a>".
                     "</td>";
     	            echo "</tr>";
     	        }

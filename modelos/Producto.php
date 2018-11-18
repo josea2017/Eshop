@@ -39,9 +39,13 @@ class Producto
       //$result = $this->connection->executeSql($sql);
       //return $this->connection->getResults($result);
       //$res = "SELECT encode(imagen, 'base64') AS imagen FROM imagenes WHERE id='1'";
-      $res = "SELECT encode(imagen, 'base64') AS imagen FROM productos";
+      /*$res = "SELECT encode(imagen, 'base64') AS imagen FROM productos";
       $resultado = $this->connection->runQuery($res);
-      return $resultado; 
+      return $resultado; */
+      $res = "SELECT encode(imagen, 'base64') AS imagen FROM productos ORDER BY id ASC";
+      $resultado = $this->connection->runQuery($res);
+      return $resultado;
+
     }
 
     public function validarCodigoDisponible($id_producto){
@@ -64,10 +68,16 @@ class Producto
     }
 
     public function listarTodosProductos(){
-
+      //SELECT * FROM public.productos ORDER BY id ASC 
+      /*
         $sql = "SELECT * FROM productos ORDER BY id ASC";
         $resultado = $this->connection->runQuery($sql);
         return $resultado; 
+        */
+        $sql = "SELECT * FROM productos ORDER BY id ASC";
+        $resultado = $this->connection->runQuery($sql);
+        return $resultado;
+
     }
 
     public function listarProductosPorIdCategoria($id_categoria)

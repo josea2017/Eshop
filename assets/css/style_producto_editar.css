@@ -1,0 +1,19 @@
+.div_tabla_editar_producto{
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	width: 50vw;
+	height: 50vw;
+	margin-top: 3%;
+	margin-left: 30%;
+}
+
+.div_tabla_editar_producto .tabla_crear_producto td input{
+	display: inline-block;
+    float: right;
+}
+
+.div_tabla_editar_producto .tabla_crear_producto td button{
+	margin-left: 37%;
+	width: 63%;
+}

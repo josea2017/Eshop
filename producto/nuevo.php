@@ -44,7 +44,7 @@ if(isset($_POST['btn_guardar_producto'])){
 
 
 <form action="./nuevo.php" method="POST" enctype="multipart/form-data">
-<div class="div_tabla_crear_producto">
+<div class="div_tabla_crear_producto" style="margin-top: 120px;">
   <table class="tabla_crear_producto" cellspacing="0" cellpadding="6">
     <tr>
       <td>ID PRODUCTO: <input type="text" name="id_producto" autofocus placeholder="Id producto" value="<?= isset($_POST['id_producto']) ? $_POST['id_producto'] : ''; ?>"></td>
@@ -56,7 +56,7 @@ if(isset($_POST['btn_guardar_producto'])){
       <td>DESCRIPCIÓN: <input type="text" name="descripcion" placeholder="Descripción" value="<?= isset($_POST['descripcion']) ? $_POST['descripcion'] : ''; ?>"></td>
     </tr>
     <tr>
-      <td>IMAGEN: <input type="file" name="imagen"></td>
+      <td>IMAGEN: <div style="display: inline-flex; position: absolute; margin-left: 42px;"><input type="file" name="imagen"></div></td>
     </tr>
     <tr>
       <td>STOCK: <input type="number" name="stock" placeholder="Stock" value="<?= isset($_POST['stock']) ? $_POST['stock'] : ''; ?>"></td>
@@ -66,7 +66,7 @@ if(isset($_POST['btn_guardar_producto'])){
     </tr>
     <tr>
       <td>ID CATEGORIA: 
-          <select name="id_categoria">
+          <select name="id_categoria" style="width: 180px;">
             <?php foreach ($lista_categorias as $categoria)
               echo "<option value='$categoria[id_categoria]'>" . $categoria['nombre'] . "</option>";
             ?>
