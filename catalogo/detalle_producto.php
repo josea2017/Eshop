@@ -48,25 +48,28 @@ if($carro_nuevo){
         return header('Location: ./index.php');
       }else{echo "Lo sentimos, inventario en cero";}
   }
-  
+  //<div class="div_imagen_producto" style="display: flex; align-items: center; width: 75%; margin-left: 300px;">
+   
 }
 
  ?>
 
  <link rel="stylesheet" type="text/css" href="../assets/css/style_index_producto.css">
 
-<div class="div_imagen_producto">
-  <?php
-          $data = $lista_imagenes[0]['imagen'];
-          $img = "<img width='20%' class='imagen_producto' src='data:image/jpeg;base64, $data' />";
-          //echo $img;
-          echo $img;
+<div class="padre" style="width: 100vw; height: 45vh; margin-top: 50px;">
+  <div class="hijo1" style="display: inline-block; flex-wrap: wrap; position: absolute; min-width: 50%; left: 43%;">
+      <?php
+              $data = $lista_imagenes[0]['imagen'];
+              $img = "<img width='20%' class='imagen_producto' src='data:image/jpeg;base64, $data' />";
+              //echo $img;
+              echo $img;
 
-   ?>
+       ?>
+  </div>  
 </div>
 
 <form method="POST">
-<div class="div_tabla_crear_producto">
+<div class="div_tabla_crear_producto" style="margin-top: -8%;">
   <table class="tabla_crear_producto" cellspacing="0" cellpadding="6">
     <tr>
       <td>ID PRODUCTO: <input type="text" disabled="true" name="id_producto" value="<?= $producto['id_producto'] ?>"></td>
