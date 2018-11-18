@@ -13,6 +13,15 @@ $nombre = $_GET["nombre"] ?? '';
 $descripcion = $_GET['descripcion'] ?? '';
 $stock = $_GET['stock'] ?? '';
 $precio = $_GET['precio'] ?? '';
+$imagen = $producto_modelo->listarImagenesIdProducto($id_producto);
+$data = $imagen['imagen'];
+$img = "<img width='30%' src= 'data:image/jpeg;base64, $data' />";
+//echo $imagen['imagen'];
+/*
+$data = $lista_imagenes[$i]['imagen'];
+$img = "<img width='20%' src= 'data:image/jpeg;base64, $data' />";
+echo "<td>" . $img . "</td>";
+*/
 
 if(isset($_POST['btn_editar_producto'])){
   $nombre_nuevo = $_POST['nombre_nuevo'] ?? '';
@@ -30,13 +39,17 @@ if(isset($_POST['btn_editar_producto'])){
 
  ?>
 
- <link rel="stylesheet" type="text/css" href="../assets/css/style_index_producto.css">
+ <link rel="stylesheet" type="text/css" href="../assets/css/style_producto_editar.css">
 
 
 <form method="POST">
-<div class="div_tabla_crear_producto">
-  <table class="tabla_crear_producto" cellspacing="0" cellpadding="6">
-    <tr>
+<div class="div_tabla_editar_producto">
+  <div><?php echo $img ?></div>
+  <table class="tabla_crear_producto" cellspacing="0" cellpadding="6" style="margin-top: -120px; margin-left: 100px;">
+    <!--<tr>
+      <td class="text-center" style="height: 100"><?php echo $img ?></div></td>
+    </tr>
+    <tr>-->
       <td>ID PRODUCTO: <input type="text" disabled="true" name="id_producto" value="<?= $id_producto ?>"></td>
     </tr>
     <tr>
