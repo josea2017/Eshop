@@ -15,11 +15,25 @@ $totalEnVentas = $orden_modelo->totalEnVentas() ?? 0;
 if(isset($_POST['btn_stock']))
 {
   $min_stock = $_POST['stock'] ?? '';
+  $pyscript = 'C:\xampp\htdocs\Eshop\check_stock.py ';
   //exec('/usr/bin/python2.7 /srv/http/assets/py/switch.py arg1 arg2'); importante
   //https://stackoverflow.com/questions/19735250/running-a-python-script-from-php
   //$command = escapeshellcmd('C:/xampp/htdocs/Eshop/check_stock.py ' . $min_stock);
   //exec('C:/Windows/py C:/xampp/htdocs/Eshop/check_stock.py $min_stock');
-  exec('C:/xampp/htdocs/Eshop/check_stock.py ' . $min_stock);
+
+  $output = shell_exec($pyscript.$min_stock);
+  if(strstr($output, "Email Enviado"))
+  {
+    //echo "Email satisfactorio";
+    ?>
+        <div class="alert alert-success" role="alert">
+              Email satisfactorio
+        </div> 
+
+    <?php
+  } 
+
+  echo("<script>".$output."</script>");
 }
 //require_once __DIR__ . '/../Db/PgConnection.php';
 
