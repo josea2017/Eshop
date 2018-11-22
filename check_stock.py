@@ -1,5 +1,6 @@
 #!/usr/bin/python  
 import sys  
+import os
 import configparser
 import psycopg2
 import smtplib
@@ -14,37 +15,37 @@ def revizar_stock():
     conn = None
     try:
         # Lectura de parametros de conexion
-    	config = configparser.RawConfigParser()
-    	config.read('ConfigFile.properties')
+        cmd = os.getcwd()
+        config = configparser.RawConfigParser()
+        config.read(cmd.replace("home","") + '\\ConfigFile.properties')
         # Conectar a PostgreSql
-    	print('Conectando a la base de datos de PostgreSQL...')
-    	conn = psycopg2.connect(user = config.get('postgresql', 'user'),
+        print('Conectando a la base de datos de PostgreSQL...')
+        conn = psycopg2.connect(user = config.get('postgresql', 'user'),
                                   	 	  	password = config.get('postgresql', 'password'),
                                  	 		host = config.get('postgresql', 'host'),
                                   	 		port = config.get('postgresql', 'port'),
                                   	 		database = config.get('postgresql', 'database'))
 
         # Se crea cursor para realizar consultas a la base de datos
-    	cursor = conn.cursor()
+        cursor = conn.cursor()
         
  		# execute a statement
-    	print('Version de la db PostgreSQL:')
-    	cursor.execute('SELECT version()')
+        print('Version de la db PostgreSQL:')
+        cursor.execute('SELECT version()')
  
         # display the PostgreSQL database server version
-    	db_version = cursor.fetchone()
-    	print(db_version)
-    	cursor.execute("""SELECT productos.id_producto, productos.nombre, productos.descripcion, categorias.nombre, productos.stock 
+        db_version = cursor.fetchone()
+        print(db_version)
+        cursor.execute("""SELECT productos.id_producto, productos.nombre, productos.descripcion, categorias.nombre, productos.stock 
     						FROM productos 
     						INNER JOIN categorias 
     						ON categorias.id_categoria = productos.id_categoria 
     						AND stock <= %s""" % min_stock)	
-    	rows=cursor.fetchall()
-    
-    	enviar_email(min_stock, config, rows)
+        rows=cursor.fetchall()
+        enviar_email(min_stock, config, rows)
      	
      	# Se cierra la conexion del cursor
-    	cursor.close()
+        cursor.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
